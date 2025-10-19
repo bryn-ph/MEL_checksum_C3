@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Balance Board — Mental Health Game</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="menu" class="screen active">
+    <h1>Balance Board</h1>
+    <p class="subtitle">Navigate life events. Keep your wellbeing balanced.</p>
+    <div class="menu-buttons">
+      <button id="startBtn">Play</button>
+      <button id="howBtn">How to play</button>
+      <button id="creditsBtn">Credits & Prompts</button>
+    </div>
+    <div class="meta">Theme: Mental Health & Wellbeing — Australia</div>
+  </div>
+
+  <div id="how" class="screen">
+    <h2>How to play</h2>
+    <ul>
+      <li>Roll the dice to move along the board (12 tiles).</li>
+      <li>Each tile may trigger an event card. Cards affect your Wellbeing (0 - 100).</li>
+      <li>If your Wellbeing reaches 0, game over. Reach tile 12 with ≥50 Wellbeing to win.</li>
+      <li>Use Support cards to recover. Choices matter.</li>
+    </ul>
+    <button class="backBtn">Back</button>
+  </div>
+
+  <div id="credits" class="screen">
+    <h2>Credits & Prompts</h2>
+    <p>Assets & code assisted by LLM prompts (see /prompts folder in repo).</p>
+    <button class="backBtn">Back</button>
+  </div>
+
+  <div id="play" class="screen">
+    <div class="topbar">
+      <div class="wellbeing">
+        <label>Wellbeing</label>
+        <div id="wellbar" class="bar">
+          <div id="wellfill" class="fill"></div>
+        </div>
+        <div id="wellvalue">75</div>
+      </div>
+      <div class="controls">
+        <button id="rollBtn">Roll Dice</button>
+        <div id="dice">—</div>
+        <div id="pos">Tile: 1</div>
+      </div>
+    </div>
+
+    <div id="board" aria-label="Game board">
+      <!-- board tiles will be injected here -->
+    </div>
+
+    <div id="cardArea" class="card-area hidden">
+      <div id="card" class="card">
+        <div id="cardText"></div>
+        <div id="choiceButtons" class="choices"></div>
+        <button id="cardOk" class="hidden">OK</button>
+      </div>
+    </div>
+
+    <div id="result" class="overlay hidden">
+      <div class="resultBox">
+        <h2 id="resultTitle"></h2>
+        <p id="resultText"></p>
+        <div class="resultButtons">
+          <button id="restartBtn">Play Again</button>
+          <button id="menuBtn">Main Menu</button>
+        </div>
+      </div>
+    </div>
+    <button class="backBtn">Back</button>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
