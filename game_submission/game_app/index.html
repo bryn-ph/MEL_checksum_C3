@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>House of Cards — Housing Crisis Card Game</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="menu" class="screen active">
+    <h1>House of Cards</h1>
+    <p class="subtitle">A card game about the housing crisis — buy, rent, survive.</p>
+
+    <div class="menu-row">
+      <label>Players:</label>
+      <select id="playerCount">
+        <option value="1">1 Human (vs AIs)</option>
+        <option value="2" selected>2 (Human + 1 AI)</option>
+        <option value="3">3 (Human + 2 AI)</option>
+        <option value="4">4 (Human + 3 AI)</option>
+      </select>
+    </div>
+
+    <div class="menu-row">
+      <label>Rounds (game length):</label>
+      <input id="roundCount" type="number" min="6" max="24" value="12">
+    </div>
+
+    <div class="menu-buttons">
+      <button id="startBtn">Start Game</button>
+      <button id="rulesBtn">How to Play</button>
+    </div>
+
+    <div class="meta">Front-end only — HTML, CSS, JS</div>
+  </div>
+
+  <div id="rules" class="screen">
+    <h2>How to play</h2>
+    <ol>
+      <li>Choose number of players and rounds, then Start Game.</li>
+      <li>Each player starts with cash and a small loan capacity. On your turn you draw 1 card.</li>
+      <li>Play up to 2 cards from your hand (property, action, or event responses).</li>
+      <li>At end of each round (after all players), rent is collected and every 3 rounds a Crisis card affects market.</li>
+      <li>After set rounds, the player with highest Net Worth (cash + properties - debt) wins.</li>
+    </ol>
+    <button class="backBtn">Back</button>
+  </div>
+
+  <div id="play" class="screen">
+    <div class="topbar">
+      <div>
+        <strong>Round:</strong> <span id="roundNum">1</span>/<span id="roundMax">12</span>
+      </div>
+      <div>
+        <strong>Current:</strong> <span id="currentPlayerName">-</span>
+      </div>
+      <div>
+        <button id="endTurnBtn">End Turn</button>
+        <button id="pauseBtn">Menu</button>
+      </div>
+    </div>
+
+    <div class="game-area">
+      <aside id="leftPanel" class="panel">
+        <h3>Players</h3>
+        <div id="playersList"></div>
+      </aside>
+
+      <main id="centerPanel" class="panel">
+        <h3>Your Hand</h3>
+        <div id="hand" class="hand"></div>
+
+        <div id="deckRow" class="deck-row">
+          <div class="deck-info">
+            <div>Deck: <span id="deckCount">0</span></div>
+            <div>Discard: <span id="discardCount">0</span></div>
+          </div>
+          <div class="controls">
+            <button id="drawBtn">Draw</button>
+          </div>
+        </div>
+
+        <h4>Board / Properties</h4>
+        <div id="propertiesArea" class="properties-area"></div>
+      </main>
+
+      <aside id="rightPanel" class="panel">
+        <h3>Game Log</h3>
+        <div id="log" class="log"></div>
+        <h4>Deck Preview (top 3)</h4>
+        <ul id="deckPreview"></ul>
+      </aside>
+    </div>
+
+    <div id="cardModal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <h4 id="modalTitle"></h4>
+        <div id="modalText"></div>
+        <div id="modalChoices" class="modal-choices"></div>
+        <div class="modal-actions">
+          <button id="modalOk">OK</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="resultModal" class="modal hidden" role="dialog" aria-modal="true">
+      <div class="modal-content">
+        <h3 id="resultTitle"></h3>
+        <div id="resultBody"></div>
+        <div class="modal-actions">
+          <button id="playAgainBtn">Play Again</button>
+          <button id="backToMenuBtn">Main Menu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
