@@ -4,10 +4,10 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+}
+
+#menu-container {
+    text-align: center;
 }
 
 #game-container {
@@ -16,19 +16,43 @@ body {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     padding: 20px;
     max-width: 600px;
+    margin: auto;
     text-align: center;
 }
 
 button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    border-radius: 4px;
-    cursor: pointer;
+    font-size: 16px;
 }
 
-button:hover {
-    background-color: #0056b3;
+#timer {
+    font-size: 18px;
+    color: #ff0000;
+    margin-top: 10px;
+    font-weight: bold;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#stats {
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#stats div {
+    margin: 0 10px;
 }
