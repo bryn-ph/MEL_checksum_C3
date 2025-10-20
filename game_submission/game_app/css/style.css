@@ -196,3 +196,69 @@ button {
     0% { transform: translateY(0) rotate(0deg); }
     100% { transform: translateY(260px) rotate(360deg); }
 }
+
+/* Minigame overlay */
+.minigame-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+}
+.minigame-card {
+    width: min(680px, 92vw);
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+}
+.minigame-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.minigame-area {
+    position: relative;
+    height: 280px;
+    border-radius: 8px;
+    background: #f6fff7;
+    border: 2px dashed #c3e6cb;
+    overflow: hidden;
+}
+.coin {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, #fff7b1, #f1c40f);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    color: #8a6d3b;
+    font-weight: 700;
+    user-select: none;
+}
+.coin.pop {
+    animation: pop-out 0.22s ease forwards;
+}
+@keyframes pop-out {
+    to { transform: scale(1.35); opacity: 0; }
+}
+
+/* Achievements */
+.achievements { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+.badge-ach { background: #e7f7ff; color: #004085; border-radius: 999px; padding: 4px 10px; font-weight: 600; font-size: 12px; box-shadow: inset 0 0 0 2px #bee5eb; }
+
+/* Whack-a-fee */
+.fee { position:absolute; width:70px; height:50px; background:#ffe8e8; border:2px solid #ffb3b3; border-radius:8px; display:grid; place-items:center; color:#721c24; font-weight:700; cursor:pointer; box-shadow:0 4px 8px rgba(0,0,0,0.1);} 
+.fee.hit { background:#d4edda; border-color:#c3e6cb; color:#155724; }
+.fee small { font-weight:600; color:#c0392b; }
+
+/* Typing challenge */
+.typing-wrap { text-align:left; }
+.typing-word { font-family: monospace; font-size: 20px; background:#f0f3f7; padding:6px 8px; border-radius:6px; }
+.typing-input { width:100%; padding:8px; border:1px solid #cfd8dc; border-radius:6px; }

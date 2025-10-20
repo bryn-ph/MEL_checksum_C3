@@ -39,4 +39,33 @@
     "options": [ {"text":"Pay inspector","effects":{"money":-400,"stress":1}}, {"text":"Skip inspection","effects":{"money":0,"stress":4}} ] },
   { "id": 20, "category": "housing", "order": "mid", "description": "Move to a cheaper suburb?", "timeLimit": 14,
     "options": [ {"text":"Move (costs)","effects":{"money":-600,"stress":5}}, {"text":"Stay put","effects":{"money":0,"stress":0}} ] }
+  ,
+  { "id": 21, "category": "housing", "order": "early", "description": "Rent is due: $500 for your room.", "timeLimit": 12,
+    "options": [
+      {"text":"Pay rent on time","effects":{"money":-500,"stress":-2,"meta":{"includeArrears":true}}},
+      {"text":"Wait and don’t pay (uh oh)","effects":{"money":0,"stress":4,"meta":{"addArrearsAmount":500,"increaseHousingCosts":0.15}}}
+    ],
+    "timeoutEffect": {"money":0,"stress":5,"meta":{"addArrearsAmount":500,"increaseHousingCosts":0.2}}
+  },
+  { "id": 22, "category": "housing", "order": "mid", "description": "Mid-year rent is due: $600.", "timeLimit": 12,
+    "options": [
+      {"text":"Pay now (clears any arrears)","effects":{"money":-600,"stress":-1,"meta":{"includeArrears":true}}},
+      {"text":"Wait—scrape by this month","effects":{"money":0,"stress":5,"meta":{"addArrearsAmount":600,"increaseHousingCosts":0.15}}}
+    ],
+    "timeoutEffect": {"money":0,"stress":6,"meta":{"addArrearsAmount":600,"increaseHousingCosts":0.2}}
+  },
+  { "id": 23, "category": "housing", "order": "late", "description": "End of year rent is due: $700.", "timeLimit": 10,
+    "options": [
+      {"text":"Pay and settle up","effects":{"money":-700,"stress":-2,"meta":{"includeArrears":true}}},
+      {"text":"Delay again (fees mount)","effects":{"money":0,"stress":6,"meta":{"addArrearsAmount":700,"increaseHousingCosts":0.2}}}
+    ],
+    "timeoutEffect": {"money":0,"stress":7,"meta":{"addArrearsAmount":700,"increaseHousingCosts":0.25}}
+  },
+  { "id": 24, "category": "housing", "order": "mid", "description": "Bills piling up—dodge fees to clear arrears!", "timeLimit": 12,
+    "options": [
+      {"text":"Play Bill Dodge","effects":{"stress":1, "meta": {"minigame":"whack-a-fee", "minigameConfig": {"seconds": 10, "reducePerHit": 120, "spawnMs": 550}}}},
+      {"text":"Ignore it","effects":{"money":0,"stress":2}}
+    ],
+    "timeoutEffect": {"money":0,"stress":3}
+  }
 ]

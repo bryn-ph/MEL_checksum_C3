@@ -74,8 +74,8 @@
     "description": "Technical interview coding test this weekend.",
     "timeLimit": 18,
     "options": [
-      { "text": "Buy a prep course", "effects": { "money": -80, "stress": -4 }},
-      { "text": "Wing it", "effects": { "money": 0, "stress": 6 }}
+      { "text": "Buy a prep course", "effects": { "money": -80, "stress": -4, "meta": { "minigame": "typing-challenge", "minigameConfig": { "seconds": 8, "reward": 250 } } }},
+      { "text": "Wing it", "effects": { "money": 0, "stress": 6, "meta": { "minigame": "typing-challenge", "minigameConfig": { "seconds": 6, "reward": 150 } } }}
     ]
   },
   {
@@ -220,5 +220,17 @@
       { "text": "Open account now", "effects": { "money": -10, "stress": -2 }},
       { "text": "Keep using foreign card", "effects": { "money": -60, "stress": 2 }}
     ]
+  },
+  {
+    "id": 21,
+    "category": "job",
+    "order": "mid",
+    "description": "Work sprint! Pick up extra tasks to earn bonuses.",
+    "timeLimit": 14,
+    "options": [
+      { "text": "Do the sprint (play mini-game)", "effects": { "stress": 2, "meta": { "minigame": "coin-rush", "minigameConfig": { "seconds": 10, "coinValue": 25, "spawnMs": 450 } } }},
+      { "text": "Skip extra work", "effects": { "money": 0, "stress": -1 }}
+    ],
+    "timeoutEffect": { "money": 0, "stress": 1 }
   }
 ]
