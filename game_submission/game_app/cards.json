@@ -1,0 +1,701 @@
+[
+  {
+    "type": "property",
+    "id": "prop-001",
+    "name": "Student Share Room",
+    "text": "Tiny, cheap, and noisy — perfect for term time.",
+    "effect": "Buyable property. Price: 25,000. Rent: 200. Risk: high.",
+    "price": 25000,
+    "rent": 200,
+    "risk": "high",
+    "explanation": "Property: Student Share Room. If you buy it pay $25,000 cash (or take loan). It yields $200 rent each rent-collection phase. High risk: more likely to be affected by eviction/market events."
+  },
+  {
+    "type": "property",
+    "id": "prop-002",
+    "name": "Tiny Home",
+    "text": "Compact living with low overheads and surprising charm.",
+    "effect": "Buyable property. Price: 40,000. Rent: 300. Risk: low.",
+    "price": 40000,
+    "rent": 300,
+    "risk": "low",
+    "explanation": "Property: Tiny Home. Buy for $40,000. Generates $300 rent per rent-collection. Low risk: resilient to some crises (e.g., floods may not affect)."
+  },
+  {
+    "type": "property",
+    "id": "prop-003",
+    "name": "Studio Unit",
+    "text": "Compact studio in a busy precinct — steady renters.",
+    "effect": "Buyable property. Price: 80,000. Rent: 450. Risk: high.",
+    "price": 80000,
+    "rent": 450,
+    "risk": "high",
+    "explanation": "Property: Studio Unit. Buy for $80,000; yields $450 rent each collection. High risk implies vulnerability to market swings and event cards."
+  },
+  {
+    "type": "property",
+    "id": "prop-004",
+    "name": "Run-down Duplex",
+    "text": "Needs TLC but has income potential if you gamble.",
+    "effect": "Buyable property. Price: 120,000. Rent: 700. Risk: high.",
+    "price": 120000,
+    "rent": 700,
+    "risk": "high",
+    "explanation": "Property: Run-down Duplex. Buy for $120,000; yields $700 rent. High-risk property: may be lost or heavily devalued during certain events."
+  },
+  {
+    "type": "property",
+    "id": "prop-005",
+    "name": "Two-bed Apartment",
+    "text": "Popular with small families and professionals.",
+    "effect": "Buyable property. Price: 200,000. Rent: 1,200. Risk: medium.",
+    "price": 200000,
+    "rent": 1200,
+    "risk": "medium",
+    "explanation": "Property: Two-bed Apartment. Buy for $200,000; yields $1,200 rent. Medium risk: balanced return and exposure."
+  },
+  {
+    "type": "property",
+    "id": "prop-006",
+    "name": "Suburban 3BR",
+    "text": "A family favourite outside the city centre.",
+    "effect": "Buyable property. Price: 350,000. Rent: 1,500. Risk: low.",
+    "price": 350000,
+    "rent": 1500,
+    "risk": "low",
+    "explanation": "Property: Suburban 3BR. Buy for $350,000; yields $1,500 rent. Low risk: lower volatility, safer in crises."
+  },
+  {
+    "type": "property",
+    "id": "prop-007",
+    "name": "High-rise Condo",
+    "text": "Sleek skyline living — expensive but desirable.",
+    "effect": "Buyable property. Price: 420,000. Rent: 2,200. Risk: high.",
+    "price": 420000,
+    "rent": 2200,
+    "risk": "high",
+    "explanation": "Property: High-rise Condo. Buy for $420,000; yields $2,200 rent. High risk: strong value swings in a crash."
+  },
+  {
+    "type": "property",
+    "id": "prop-008",
+    "name": "Renovated Terrace",
+    "text": "Stylish, renovated inner-city terrace with steady tenants.",
+    "effect": "Buyable property. Price: 430,000. Rent: 2,300. Risk: medium.",
+    "price": 430000,
+    "rent": 2300,
+    "risk": "medium",
+    "explanation": "Property: Renovated Terrace. Buy for $430,000; yields $2,300 rent. Medium risk indicates decent resilience and income."
+  },
+  {
+    "type": "property",
+    "id": "prop-009",
+    "name": "Victorian House",
+    "text": "Heritage charm, pricey to maintain but priceless to some.",
+    "effect": "Buyable property. Price: 500,000. Rent: 2,500. Risk: medium.",
+    "price": 500000,
+    "rent": 2500,
+    "risk": "medium",
+    "explanation": "Property: Victorian House. Buy for $500,000; yields $2,500 rent. Medium risk: maintenance events may cost more."
+  },
+  {
+    "type": "property",
+    "id": "prop-010",
+    "name": "Renovated Duplex",
+    "text": "Two units updated with modern interiors.",
+    "effect": "Buyable property. Price: 260,000. Rent: 1,300. Risk: medium.",
+    "price": 260000,
+    "rent": 1300,
+    "risk": "medium",
+    "explanation": "Property: Renovated Duplex. Buy for $260,000; yields $1,300 rent. Balanced medium risk and good income for mid-tier players."
+  },
+  {
+    "type": "property",
+    "id": "prop-011",
+    "name": "Suburban Townhouse",
+    "text": "Reliable, close to schools and parks.",
+    "effect": "Buyable property. Price: 310,000. Rent: 1,400. Risk: low.",
+    "price": 310000,
+    "rent": 1400,
+    "risk": "low",
+    "explanation": "Property: Suburban Townhouse. Buy for $310,000; yields $1,400 rent. Low risk: stable rent and resistance to some crises."
+  },
+  {
+    "type": "property",
+    "id": "prop-012",
+    "name": "Coastal Bungalow",
+    "text": "Nice view, tempting renters — watch weather risks.",
+    "effect": "Buyable property. Price: 380,000. Rent: 1,800. Risk: medium.",
+    "price": 380000,
+    "rent": 1800,
+    "risk": "medium",
+    "explanation": "Property: Coastal Bungalow. Buy for $380,000; yields $1,800 rent. Medium risk; some crises (flood/storm) may affect value."
+  },
+  {
+    "type": "property",
+    "id": "prop-013",
+    "name": "Gentrified Studio",
+    "text": "Small but with trendy rents — boom-or-bust vibes.",
+    "effect": "Buyable property. Price: 160,000. Rent: 900. Risk: high.",
+    "price": 160000,
+    "rent": 900,
+    "risk": "high",
+    "explanation": "Property: Gentrified Studio. Buy for $160,000; yields $900 rent. High risk due to market sensitivity."
+  },
+  {
+    "type": "property",
+    "id": "prop-014",
+    "name": "Warehouse Conversion Loft",
+    "text": "Hip lofts attract higher rents for creatives.",
+    "effect": "Buyable property. Price: 290,000. Rent: 1,600. Risk: high.",
+    "price": 290000,
+    "rent": 1600,
+    "risk": "high",
+    "explanation": "Property: Warehouse Conversion Loft. Buy for $290,000; yields $1,600 rent. High risk but strong rental when market favors urban dwellers."
+  },
+  {
+    "type": "property",
+    "id": "prop-015",
+    "name": "Country Cottage",
+    "text": "Peaceful backyard, less demand but loyal tenants.",
+    "effect": "Buyable property. Price: 220,000. Rent: 1,000. Risk: low.",
+    "price": 220000,
+    "rent": 1000,
+    "risk": "low",
+    "explanation": "Property: Country Cottage. Buy for $220,000; yields $1,000 rent. Low risk and useful for stable income."
+  },
+  {
+    "type": "property",
+    "id": "prop-016",
+    "name": "Luxury Penthouse",
+    "text": "Top-floor lavish living — huge upside, big downside if market drops.",
+    "effect": "Buyable property. Price: 1,200,000. Rent: 8,000. Risk: medium.",
+    "price": 1200000,
+    "rent": 8000,
+    "risk": "medium",
+    "explanation": "Property: Luxury Penthouse. Buy for $1,200,000; yields $8,000 rent. Medium risk but expensive: requires strong cash or loans."
+  },
+  {
+    "type": "property",
+    "id": "prop-017",
+    "name": "Mixed-use Corner Block",
+    "text": "Shops below, apartments above — diverse income streams.",
+    "effect": "Buyable property. Price: 680,000. Rent: 3,200. Risk: medium.",
+    "price": 680000,
+    "rent": 3200,
+    "risk": "medium",
+    "explanation": "Property: Mixed-use Corner Block. Buy for $680,000; yields $3,200 rent. Mixed revenue sources reduce some single-market risk."
+  },
+  {
+    "type": "property",
+    "id": "prop-018",
+    "name": "Affordable Housing Unit",
+    "text": "Lower returns but government-backed stability.",
+    "effect": "Buyable property. Price: 150,000. Rent: 750. Risk: low.",
+    "price": 150000,
+    "rent": 750,
+    "risk": "low",
+    "explanation": "Property: Affordable Housing Unit. Buy for $150,000; yields $750 rent. Low risk and may be exempt or cushioned in some crises."
+  },
+
+  {
+    "type": "event",
+    "id": "evt-001",
+    "name": "Interest Rate Hike (Local)",
+    "text": "The central bank nudges rates up — households flinch.",
+    "effect": "All players' outstanding debt increases by 10% (instant).",
+    "explanation": "Event: Interest Rate Hike. Immediately increase each player's debt total by 10% (round to nearest $100). Apply once on event resolution."
+  },
+  {
+    "type": "event",
+    "id": "evt-002",
+    "name": "Community Garden Initiative",
+    "text": "Neighbors come together — happier tenants.",
+    "effect": "Each player receives +500 cash (local goodwill).",
+    "explanation": "Event: Community Garden. Add $500 cash to every player's cash balance. Represents improved neighbourhood/community benefits."
+  },
+  {
+    "type": "event",
+    "id": "evt-003",
+    "name": "Eviction Notice",
+    "text": "A legal eviction affects one of your rented units.",
+    "effect": "Choose a player with properties; they lose one random property (discarded).",
+    "explanation": "Event: Eviction Notice. Select a player with at least one property; that player discards a randomly chosen property (it returns to discard pile)."
+  },
+  {
+    "type": "event",
+    "id": "evt-004",
+    "name": "First Home Grant",
+    "text": "Subsidy to encourage new buyers enters the market.",
+    "effect": "Next property purchase by the drawing player is 10% cheaper (single-use).",
+    "explanation": "Event: First Home Grant. The player who draws this card receives a 10% discount on their next property purchase only; then discount clears."
+  },
+  {
+    "type": "event",
+    "id": "evt-005",
+    "name": "Unexpected Maintenance",
+    "text": "Pipe bursts — urgent repairs required.",
+    "effect": "Pay $7,500 cash or lose one property's rent this round.",
+    "explanation": "Event: Unexpected Maintenance. The drawing player must either pay $7,500 from cash (if possible) or mark one owned property as non-income this round (no rent collected from it)."
+  },
+  {
+    "type": "event",
+    "id": "evt-006",
+    "name": "Renovation Boom",
+    "text": "A surge in local renovations increases values.",
+    "effect": "Choose one owned property: +15% value and +10% rent (immediate).",
+    "explanation": "Event: Renovation Boom. The drawing player selects one of their properties; increase its value by 15% and rent by 10% immediately (round values)."
+  },
+  {
+    "type": "event",
+    "id": "evt-007",
+    "name": "Neighborhood Protest",
+    "text": "Residents protest proposed development — uncertain outcomes.",
+    "effect": "All players: roll a die; on 1-2 lose $2,000; on 3-4 no change; 5-6 gain $2,000.",
+    "explanation": "Event: Neighborhood Protest. Each player rolls 1d6; results: 1-2 pay $2,000; 3-4 nothing; 5-6 receive $2,000. Simulates local volatility."
+  },
+  {
+    "type": "event",
+    "id": "evt-008",
+    "name": "Tenant Strike",
+    "text": "Rent collection is disrupted for a building.",
+    "effect": "Choose one player's property: that property yields no rent this round.",
+    "explanation": "Event: Tenant Strike. The drawing player picks a target property owned by any player; that property provides no rent in the next rent-collection phase."
+  },
+  {
+    "type": "event",
+    "id": "evt-009",
+    "name": "Landlord Sells",
+    "text": "A previous owner sells — tenant relocation required.",
+    "effect": "Drawing player must discard one property they own or pay $10,000 to keep it.",
+    "explanation": "Event: Landlord Sells. The drawing player decides to either discard one of their properties to the discard pile or pay $10,000 to retain it (if they have the cash)."
+  },
+  {
+    "type": "event",
+    "id": "evt-010",
+    "name": "Local Development Approval",
+    "text": "New development approved nearby — values shift.",
+    "effect": "All property prices reduce by 8% for valuation purposes (one-time modifier).",
+    "explanation": "Event: Local Development Approval. Immediately multiply all property values by 0.92 (reduce by 8%). This affects future rent and net worth calculations."
+  },
+  {
+    "type": "event",
+    "id": "evt-011",
+    "name": "Renters' Union",
+    "text": "Stronger renter protections reduce evictions.",
+    "effect": "For next 2 rounds, Eviction-related events cannot force property loss.",
+    "explanation": "Event: Renters' Union. Set game flag protecting properties from eviction events for two full rounds; track remaining rounds."
+  },
+  {
+    "type": "event",
+    "id": "evt-012",
+    "name": "Inspection Fine",
+    "text": "Failed inspection results in a fine.",
+    "effect": "Drawing player pays $5,000 fine.",
+    "explanation": "Event: Inspection Fine. Immediately subtract $5,000 from the drawing player's cash (if cash insufficient they may take loan or accept debt consequences)."
+  },
+  {
+    "type": "event",
+    "id": "evt-013",
+    "name": "Pop-up Cafe Opens",
+    "text": "Local amenity improves desirability slightly.",
+    "effect": "Owner of one adjacent property (player's choice) gets +200 rent this round.",
+    "explanation": "Event: Pop-up Cafe. The drawing player chooses any single property in play; its owner receives an extra $200 during the next rent collection."
+  },
+  {
+    "type": "event",
+    "id": "evt-014",
+    "name": "Insurance Payout",
+    "text": "An insured property gets a payout after damage.",
+    "effect": "Drawing player receives $12,000 cash (one-off).",
+    "explanation": "Event: Insurance Payout. Add $12,000 to the drawing player's cash balance. Represents claim recovery for prior loss."
+  },
+  {
+    "type": "event",
+    "id": "evt-015",
+    "name": "Green Retrofit Grant",
+    "text": "Government offers subsidy for energy upgrades.",
+    "effect": "Reduce price of renovating a property by $7,500 for this player (one-time use).",
+    "explanation": "Event: Green Retrofit Grant. The drawing player may apply a $7,500 discount to the next renovation action they perform on a property."
+  },
+  {
+    "type": "event",
+    "id": "evt-016",
+    "name": "Short-term Letting Spike",
+    "text": "Tourism season boosts short-term rental income.",
+    "effect": "Choose one property you own: +50% rent for next rent-collection phase.",
+    "explanation": "Event: Short-term Letting Spike. The drawing player selects one of their properties; its rent is increased by 50% for the next rent collection only."
+  },
+  {
+    "type": "event",
+    "id": "evt-017",
+    "name": "Developer Fails to Deliver",
+    "text": "A developer delays completion — investors uneasy.",
+    "effect": "All players' property values decrease by 5% this round.",
+    "explanation": "Event: Developer Fails to Deliver. Multiply all players' property values by 0.95 (reduce by 5%); apply immediately."
+  },
+  {
+    "type": "event",
+    "id": "evt-018",
+    "name": "Community Volunteer Project",
+    "text": "Local goodwill leads to minor tax breaks.",
+    "effect": "Drawing player reduces debt interest due this round by $2,000 (one-off).",
+    "explanation": "Event: Community Volunteer Project. Subtract $2,000 from interest or debt obligations for the drawing player for the current round."
+  },
+  {
+    "type": "event",
+    "id": "evt-019",
+    "name": "Zoning Change",
+    "text": "Zoning reclassification may open redevelopment options.",
+    "effect": "Pick one of your properties: you may flip it into a higher-tier property (+25% value) or keep it as-is.",
+    "explanation": "Event: Zoning Change. The drawing player chooses one property they own and decides whether to increase its value by 25% (representing redevelopment) or leave it unchanged."
+  },
+  {
+    "type": "event",
+    "id": "evt-020",
+    "name": "Local Business Closes",
+    "text": "Loss of amenity reduces desirability in the area.",
+    "effect": "Choose one player's property: reduce its value by 10% (one-time).",
+    "explanation": "Event: Local Business Closes. The drawing player targets any single property owned by any player and reduces its value by 10% immediately."
+  },
+
+  {
+    "type": "action",
+    "id": "act-001",
+    "name": "Take Loan",
+    "text": "Inject cash now; pay later with interest.",
+    "effect": "Gain $30,000 cash instantly; debt +30,000.",
+    "explanation": "Action: Take Loan. Immediately add $30,000 to your cash and increase your debt by $30,000. Debt may accrue interest during crises."
+  },
+  {
+    "type": "action",
+    "id": "act-002",
+    "name": "Renovate",
+    "text": "Invest to increase value and rent.",
+    "effect": "Choose one property you own: +20% value, +20% rent (pay cost of renovation = 10% of property's value).",
+    "explanation": "Action: Renovate. Pick one owned property. Pay renovation cost equal to 10% of that property's current value (from your cash). If you pay, increase that property's value by 20% and rent by 20% immediately."
+  },
+  {
+    "type": "action",
+    "id": "act-003",
+    "name": "Quick Fix",
+    "text": "Small repairs to avoid fines and keep tenants happy.",
+    "effect": "Pay $3,000 to prevent the next maintenance fine on one property you own.",
+    "explanation": "Action: Quick Fix. Pay $3,000 cash to protect one chosen property from the next 'maintenance' or inspection fine event that would affect it."
+  },
+  {
+    "type": "action",
+    "id": "act-004",
+    "name": "Rent Increase",
+    "text": "Raise rents where possible for a short-term boost.",
+    "effect": "All your properties gain +10% rent for the next rent-collection phase.",
+    "explanation": "Action: Rent Increase. For the next rent-collection phase only, multiply your properties' rents by 1.10. This effect lasts one rent collection."
+  },
+  {
+    "type": "action",
+    "id": "act-005",
+    "name": "Offer Renovation Loan (Haven)",
+    "text": "Offer tenants an improvement plan that also increases value.",
+    "effect": "Pick one property: pay $5,000 to increase its value by 12% and rent by 8%.",
+    "explanation": "Action: Offer Renovation Loan. Pay $5,000 now to get a 12% property value increase and 8% rent increase on a selected owned property immediately."
+  },
+  {
+    "type": "action",
+    "id": "act-006",
+    "name": "Evade Tax (Risky)",
+    "text": "Try your luck avoiding taxes — risky but tempting.",
+    "effect": "50% chance nothing happens; 50% chance pay $15,000 fine.",
+    "explanation": "Action: Evade Tax. Flip a coin (or roll); on success no effect; on failure subtract $15,000 from your cash immediately."
+  },
+  {
+    "type": "action",
+    "id": "act-007",
+    "name": "Insurance Policy",
+    "text": "Buy insurance to protect against a single loss event.",
+    "effect": "Pay $6,000 now; the next property loss event affecting you is ignored and you are compensated $10,000 instead.",
+    "explanation": "Action: Insurance Policy. Pay $6,000 to activate protection. The next time you would lose a property to an event, you instead keep the property and receive $10,000 compensation (apply effect and consume this insurance)."
+  },
+  {
+    "type": "action",
+    "id": "act-008",
+    "name": "Subsidized Loan",
+    "text": "Government loans with lower immediate interest.",
+    "effect": "Take $50,000 loan; debt +50,000 but interest in next interest-hike crisis is halved for this loan.",
+    "explanation": "Action: Subsidized Loan. Add $50,000 to your cash and debt. In future 'interest hike' events, treat half of this loan's debt as exempt for the interest calculation."
+  },
+  {
+    "type": "action",
+    "id": "act-009",
+    "name": "Sell Property",
+    "text": "Flip a property for cash at its current value (minus 5% fees).",
+    "effect": "Choose one owned property: sell for current value minus 5% fee, add to your cash, property removed.",
+    "explanation": "Action: Sell Property. Remove the chosen property from your holdings and add its value * 0.95 to your cash (sell fee)."
+  },
+  {
+    "type": "action",
+    "id": "act-010",
+    "name": "Bridge Funding",
+    "text": "Short-term bridge to cover a purchase gap.",
+    "effect": "Temporarily receive $15,000; must repay within two rounds or pay $3,000 penalty per overdue round.",
+    "explanation": "Action: Bridge Funding. Grant $15,000 to your cash immediately. Track repayment: if not repaid within two full rounds, apply $3,000 penalty per overdue round until repaid."
+  },
+  {
+    "type": "action",
+    "id": "act-011",
+    "name": "Community Outreach",
+    "text": "Invest time to reduce risk and improve tenant stability.",
+    "effect": "For the next two rounds, one of your properties is protected from eviction and yields +200 rent each round.",
+    "explanation": "Action: Community Outreach. Choose one property you own to gain tenant stability for two rounds: it will not be affected by eviction events and gains +$200 rent each round for that period."
+  },
+  {
+    "type": "action",
+    "id": "act-012",
+    "name": "Buy-to-Rent Strategy",
+    "text": "Buy a property and pre-lease it to guarantee income.",
+    "effect": "When you play this action, you may purchase any property in your hand at 95% of price and it yields +10% rent for the next 3 rounds.",
+    "explanation": "Action: Buy-to-Rent Strategy. You may immediately buy a property from your hand at a 5% discount (pay price*0.95). The purchased property's rent is increased by 10% for the next three rent collection phases."
+  },
+
+  {
+    "type": "crisis",
+    "id": "crs-001",
+    "name": "Market Crash",
+    "text": "Sudden crash slashes property values across the board.",
+    "effect": "All property values drop by 40% (multiply by 0.6).",
+    "explanation": "Crisis: Market Crash. On resolution, set each owned property's value to value * 0.6 (round to nearest $100). This is a global, immediate change."
+  },
+  {
+    "type": "crisis",
+    "id": "crs-002",
+    "name": "Interest Rate Spike",
+    "text": "Debt becomes more expensive overnight.",
+    "effect": "All players' debt increases by 10% (add 10% of debt to the debt).",
+    "explanation": "Crisis: Interest Rate Spike. Increase each player's current debt by 10% (rounded). This represents immediate interest accrual or repricing."
+  },
+  {
+    "type": "crisis",
+    "id": "crs-003",
+    "name": "Rent Freeze",
+    "text": "Policy halts rent collection for a period.",
+    "effect": "No rent is collected during the next rent-collection phase.",
+    "explanation": "Crisis: Rent Freeze. For the next scheduled rent collection, do not collect any rents. After that phase the freeze ends."
+  },
+  {
+    "type": "crisis",
+    "id": "crs-004",
+    "name": "Government Stimulus",
+    "text": "Direct payments to households to relieve pressure.",
+    "effect": "Each player receives $10,000 cash.",
+    "explanation": "Crisis: Government Stimulus. Immediately add $10,000 to every player's cash balance."
+  },
+  {
+    "type": "crisis",
+    "id": "crs-005",
+    "name": "Natural Disaster (Flood)",
+    "text": "Floods damage low-lying properties — expensive consequences.",
+    "effect": "All 'coastal' or 'low-lying' flagged properties lose 50% value; owners may pay $20,000 per property to fully repair (preventing value loss).",
+    "explanation": "Crisis: Natural Disaster (Flood). Target properties with flood exposure (implementer: mark some properties as flood-prone). If owner pays $20,000 per affected property immediately, its value is preserved; otherwise reduce value by 50%."
+  },
+  {
+    "type": "crisis",
+    "id": "crs-006",
+    "name": "Developer Collapse",
+    "text": "A major developer goes bankrupt, halting projects and confidence.",
+    "effect": "All players' property values drop by 15% this round.",
+    "explanation": "Crisis: Developer Collapse. Multiply all property values by 0.85 immediately. This is a global negative modifier applied once."
+  },
+  {
+    "type": "crisis",
+    "id": "crs-007",
+    "name": "Eviction Moratorium",
+    "text": "A temporary law blocks evictions and protects tenants.",
+    "effect": "For 2 rounds, players cannot lose properties to eviction events; some eviction events have no effect.",
+    "explanation": "Crisis: Eviction Moratorium. Set a protection flag for two rounds preventing event cards that would force property removal from taking effect."
+  },
+  {
+    "type": "crisis",
+    "id": "crs-008",
+    "name": "Foreign Investment Surge",
+    "text": "A wave of outside capital pushes prices up temporarily.",
+    "effect": "All property values increase by 20% (multiply by 1.2).",
+    "explanation": "Crisis: Foreign Investment Surge. Immediately multiply each owned property's value by 1.2, reflecting upward market pressure."
+  },
+  {
+    "type": "crisis",
+    "id": "crs-009",
+    "name": "Regulatory Reform",
+    "text": "New rules change subsidies and tax benefits.",
+    "effect": "Players with debt > 0 pay a one-off $5,000 processing fee; affordable properties gain +8% value.",
+    "explanation": "Crisis: Regulatory Reform. Charge each player with positive debt a $5,000 fee (subtract from cash). Then increase values of properties flagged as 'affordable' by 8% (implementer: map some properties)."
+  },
+  {
+    "type": "crisis",
+    "id": "crs-010",
+    "name": "Wage Shock",
+    "text": "Wages fall, reducing household spending power.",
+    "effect": "All players collect 15% less rent during the next rent collection.",
+    "explanation": "Crisis: Wage Shock. For the next rent-collection phase only, reduce all rent collection amounts by multiplying by 0.85."
+  },
+
+  {
+    "type": "event",
+    "id": "evt-021",
+    "name": "Pop-up Artist Collective",
+    "text": "Short-term creative energy raises rents in a small pocket.",
+    "effect": "Select one property: +300 rent this round.",
+    "explanation": "Event: Pop-up Artist Collective. The drawing player chooses a single property; that property receives an extra $300 for the upcoming rent collection phase."
+  },
+  {
+    "type": "event",
+    "id": "evt-022",
+    "name": "Housing Pitch Competition",
+    "text": "You pitch a plan — investors are impressed.",
+    "effect": "Drawing player receives $8,000 cash.",
+    "explanation": "Event: Housing Pitch Competition. Immediately add $8,000 to the drawing player's cash as if they secured small investment."
+  },
+  {
+    "type": "event",
+    "id": "evt-023",
+    "name": "Squatter Settlement",
+    "text": "Unofficial occupants reduce rental income unpredictably.",
+    "effect": "Choose one opponent: that player loses 50% of one property's rent next round.",
+    "explanation": "Event: Squatter Settlement. The drawing player selects an opponent; that opponent chooses a property that will produce only half its usual rent next collection."
+  },
+  {
+    "type": "event",
+    "id": "evt-024",
+    "name": "Tax Break for Landlords",
+    "text": "A temporary tax reduction benefits owners.",
+    "effect": "Drawing player reduces debt by $4,000 (tax credit) or receives $4,000 cash instead (player's choice).",
+    "explanation": "Event: Tax Break for Landlords. The drawing player chooses whether to apply a $4,000 reduction to their debt or receive $4,000 in cash."
+  },
+  {
+    "type": "event",
+    "id": "evt-025",
+    "name": "Media Scandal",
+    "text": "A negative story hits — public perception matters.",
+    "effect": "Choose any player's property: -12% value immediately.",
+    "explanation": "Event: Media Scandal. The drawing player selects a property owned by any player and reduces its value by 12% (immediate)."
+  },
+  {
+    "type": "event",
+    "id": "evt-026",
+    "name": "Charity Donation",
+    "text": "You donate to local causes and build goodwill.",
+    "effect": "Drawing player loses $2,000 but can ignore next eviction event targeting them.",
+    "explanation": "Event: Charity Donation. Deduct $2,000 now. Set a one-time protection that prevents the next eviction-based property loss from affecting the drawing player."
+  },
+  {
+    "type": "event",
+    "id": "evt-027",
+    "name": "Price Discovery",
+    "text": "A valuation suggests your property is underpriced.",
+    "effect": "Choose one owned property: +12% value (instant).",
+    "explanation": "Event: Price Discovery. The drawing player chooses one of their properties and increases its current value by 12% immediately."
+  },
+  {
+    "type": "event",
+    "id": "evt-028",
+    "name": "Repair Scam",
+    "text": "A dodgy contractor takes your money and does nothing.",
+    "effect": "Pay $6,000 or lose one property's next rent collection.",
+    "explanation": "Event: Repair Scam. The drawing player must either pay $6,000 or choose one of their properties that will not produce rent in the upcoming collection."
+  },
+  {
+    "type": "event",
+    "id": "evt-029",
+    "name": "Community Hub Opens",
+    "text": "A new hub helps tenants find part-time work.",
+    "effect": "All players receive +300 cash this round.",
+    "explanation": "Event: Community Hub. Add $300 to every player's cash instantly. Represents local economic uplift."
+  },
+  {
+    "type": "event",
+    "id": "evt-030",
+    "name": "Speculator Drops Out",
+    "text": "A big buyer pulls back — prices wobble.",
+    "effect": "Randomly choose one property in play: -10% value.",
+    "explanation": "Event: Speculator Drops Out. Choose at random a property currently owned by any player and reduce its value by 10%."
+  },
+
+  {
+    "type": "action",
+    "id": "act-013",
+    "name": "Crowdfund Improvement",
+    "text": "Raise small funds from the community to upgrade a property.",
+    "effect": "Raise $10,000 from community; use it on one property to increase value by 10% (no cash cost to player).",
+    "explanation": "Action: Crowdfund Improvement. Immediately add $10,000 designated to a chosen property; increase that property's value by 10% without deducting player cash."
+  },
+  {
+    "type": "action",
+    "id": "act-014",
+    "name": "Lease Guarantee",
+    "text": "Provide a guarantee to secure a tenant quickly.",
+    "effect": "One property you buy next turn yields guaranteed rent of +500 for its first rent-collection phase.",
+    "explanation": "Action: Lease Guarantee. The next property you purchase will yield an extra $500 on its first rent collection."
+  },
+  {
+    "type": "action",
+    "id": "act-015",
+    "name": "Bulk Sale",
+    "text": "Sell two properties at once at 92% combined value.",
+    "effect": "Choose two owned properties: sell both for combined (value * 0.92) and add to cash.",
+    "explanation": "Action: Bulk Sale. Remove two chosen properties from your holdings and add 92% of their total combined value to your cash (fees included)."
+  },
+  {
+    "type": "action",
+    "id": "act-016",
+    "name": "Community Housing Partnership",
+    "text": "Partner with a non-profit for stable income.",
+    "effect": "Pick one owned property: it yields +400 rent each round for next 3 rounds, but cannot be sold during that period.",
+    "explanation": "Action: Community Housing Partnership. Choose a property to lock into partnership for three rounds: it yields an extra $400 per round and is unsellable until the period ends."
+  },
+  {
+    "type": "action",
+    "id": "act-017",
+    "name": "Reassess Portfolio",
+    "text": "Take time to reorganize and reduce risk.",
+    "effect": "Choose up to two properties you own: reduce each's risk level by one step (high→medium or medium→low).",
+    "explanation": "Action: Reassess Portfolio. For up to two properties, lower their risk classification by one level (e.g., high to medium). Useful to protect against future crises."
+  },
+  {
+    "type": "action",
+    "id": "act-018",
+    "name": "Short Sell Speculator",
+    "text": "Bet against a property — payoff if market drops.",
+    "effect": "If the next crisis reduces property values, gain 10% of your targeted property's pre-crash value; otherwise pay 5% of its value.",
+    "explanation": "Action: Short Sell Speculator. Choose a target property. If the next crisis reduces overall property values, you gain a payout equal to 10% of that property's pre-crisis value; if no value drop occurs in the next crisis, you pay 5% of its value (representing a failed bet)."
+  },
+  {
+    "type": "action",
+    "id": "act-019",
+    "name": "Emergency Repair",
+    "text": "Stopgap measure to avoid losing a property.",
+    "effect": "Pay $12,000 to prevent a property loss that would occur this round.",
+    "explanation": "Action: Emergency Repair. Immediately spend $12,000 to negate an event in the same round that would otherwise cause you to lose a property."
+  },
+  {
+    "type": "action",
+    "id": "act-020",
+    "name": "Lobby for Change",
+    "text": "Influence local policy for a short benefit.",
+    "effect": "Roll a die: on 4-6 get a policy result that gives you $8,000; on 1-3 pay $4,000 in lobbying costs (no other effect).",
+    "explanation": "Action: Lobby for Change. Roll 1d6; if result is 4-6, add $8,000 to your cash (successful lobbying); if 1-3, subtract $4,000 (failed attempt)."
+  },
+  {
+    "type": "action",
+    "id": "act-021",
+    "name": "Tenant Mediation",
+    "text": "Resolve tenant disputes to avoid costly evictions.",
+    "effect": "Cancel the next eviction event targeting you and gain +300 rent on that property next round.",
+    "explanation": "Action: Tenant Mediation. Neutralize the next eviction or tenant-loss event aimed at you and grant +$300 rent on the affected property for the next rent collection."
+  },
+  {
+    "type": "action",
+    "id": "act-022",
+    "name": "Affordable Housing Grant (Apply)",
+    "text": "Apply for a grant to convert a property to affordable housing.",
+    "effect": "If accepted (50% chance), convert one property to 'affordable' status: +8% value and receives special protections in some crises; if rejected, pay $2,000 application fee.",
+    "explanation": "Action: Affordable Housing Grant. Flip 1d2: on success mark chosen property as 'affordable' (value +8% and some crisis protections); on failure subtract $2,000 from cash."
+  }
+]

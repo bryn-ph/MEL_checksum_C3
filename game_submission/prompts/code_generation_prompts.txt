@@ -1,0 +1,7 @@
+Prompt1: Give me an example of the html/javascript/css for a housing game focused on player against ai opponent. Where the goal is to have the highest net worth through playing different cards which are either property, action or event cards. Each player should start with some cash and a small starting loan.
+Prompt2: Generate around 60 different cards for "House of Cards", distributed as: 
+- 18 Property cards (include name, price, base rent, risk level),
+- 20 Event cards (one-line text + effect description),
+- 12 Action cards (name + play effect),
+- 10 Crisis cards (name + market-wide effect).
+For each card include a short flavour text line (1 sentence). Output as JSON array with keys: type, id, name, text, effect, price (if property), rent (if property), risk (if property). Also include a full explanation as to what the card does  so that a user can hover over an icon on the card and see it.
