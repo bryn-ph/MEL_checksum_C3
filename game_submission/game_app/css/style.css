@@ -1,9 +1,10 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    color: #333;
+    background: radial-gradient(1200px 800px at 20% 20%, #0b3d2e 0%, #124d38 40%, rgba(18,77,56,0.8) 60%), linear-gradient(135deg, #0b3d2e 0%, #124d38 40%, #f1c40f 100%);
+    color: #1f2e2b;
     margin: 0;
     padding: 0;
+    min-height: 100vh;
 }
 
 #menu-container {
@@ -11,6 +12,17 @@ body {
 }
 
 #game-container {
+    background: #ffffffee;
+    border-radius: 8px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    max-width: 600px;
+    margin: auto;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#game-over-screen, #success-screen {
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -18,19 +30,70 @@ body {
     max-width: 600px;
     margin: auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#game-over-screen h1 {
+    color: #dc3545;
+}
+
+#success-screen h1 {
+    color: #28a745;
 }
 
 button {
     font-size: 16px;
+    border-radius: 10px !important;
+}
+
+.option-btn {
+    min-width: 240px;
+    text-align: left;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+.option-icon {
+    font-size: 20px;
+}
+.category-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 12px;
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+/* Timer bar */
+.timer-wrapper {
+    width: 100%;
+    height: 10px;
+    background: #eee;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+.timer-bar {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, #2ecc71, #f1c40f, #e74c3c);
+    transition: width 1s linear;
 }
 
 #timer {
     font-size: 18px;
-    color: #ff0000;
+    color: #c0392b;
     margin-top: 10px;
     font-weight: bold;
     animation: pulse 1s infinite;
 }
+.timer-low { color: #e74c3c; }
 
 @keyframes pulse {
     0% {
@@ -47,7 +110,7 @@ button {
 #stats {
     font-size: 18px;
     font-weight: bold;
-    background-color: #f8f9fa;
+    background: linear-gradient(90deg, #d4edda 0%, #fff3cd 50%, #d1ecf1 100%);
     padding: 10px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -55,4 +118,81 @@ button {
 
 #stats div {
     margin: 0 10px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background-color: #ffffffcc;
+    box-shadow: inset 0 0 0 2px rgba(0,0,0,0.03);
+}
+
+#quit-game {
+    display: block;
+    margin: 20px auto;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#quit-game:hover {
+    background-color: #c82333;
+}
+
+/* Progress bar */
+.progress-wrapper {
+    width: 100%;
+    height: 12px;
+    background: #e9ecef;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #2ecc71, #f1c40f);
+    transition: width 0.4s ease;
+}
+
+/* Themed badges */
+.badge-money { color:#155724; background:#d4edda; }
+.badge-stress { color:#721c24; background:#f8d7da; }
+.badge-debt { color:#004085; background:#cce5ff; }
+.badge-stocks { color:#856404; background:#fff3cd; }
+
+/* Result banner */
+.result-banner {
+    margin: 10px auto;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-weight: 600;
+    display: inline-block;
+}
+.result-success { background: #d4edda; color: #155724; box-shadow: 0 0 0 2px #c3e6cb inset; }
+.result-fail { background: #f8d7da; color: #721c24; box-shadow: 0 0 0 2px #f5c6cb inset; }
+
+/* Flash effects */
+.flash-green { box-shadow: 0 0 0 4px rgba(46, 204, 113, 0.5); }
+.flash-red { box-shadow: 0 0 0 4px rgba(192, 57, 43, 0.5); }
+
+/* Confetti */
+.confetti-container {
+    position: relative;
+    width: 100%;
+    height: 0;
+}
+.confetti-piece {
+    position: absolute;
+    top: 0;
+    width: 8px;
+    height: 14px;
+    opacity: 0.9;
+    border-radius: 2px;
+    animation: confetti-fall linear forwards;
+}
+@keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(260px) rotate(360deg); }
 }

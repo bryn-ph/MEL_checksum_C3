@@ -1,0 +1,76 @@
+[
+  { "id": 1, "category": "random", "order": "early", "description": "You win a small lottery prize!", "timeLimit": 0,
+    "options": [ {"text":"Save the money","effects":{"money":1000,"stress":0}}, {"text":"Spend it on a vacation","effects":{"money":0,"stress":-10}} ] },
+
+  { "id": 2, "category": "random", "order": "early", "description": "Open a micro-investing app?", "timeLimit": 12,
+    "options": [ {"text":"Deposit $200","effects":{"money":-200,"stocksValue":200,"stress":0}}, {"text":"Skip for now","effects":{"money":0,"stress":0}} ] },
+
+  { "id": 3, "category": "random", "order": "early", "description": "Phone breaks. Repair or replace?", "timeLimit": 10,
+    "options": [ {"text":"Repair","effects":{"money":-180,"stress":1}}, {"text":"Replace","effects":{"money":-900,"stress":0}} ] },
+
+  { "id": 4, "category": "random", "order": "mid", "description": "Medicare levy notice.", "timeLimit": 12,
+    "options": [ {"text":"Pay now","effects":{"money":-250,"stress":1}}, {"text":"Payment plan","effects":{"money":-80,"debt":170,"stress":2}} ] },
+
+  { "id": 5, "category": "random", "order": "mid", "description": "ATO tax return due.", "timeLimit": 16,
+    "options": [ {"text":"Lodge with accountant","effects":{"money":-180,"stress":-3}}, {"text":"DIY lodge","effects":{"money":0,"stress":3}} ] },
+
+  { "id": 6, "category": "random", "order": "mid", "description": "Friend asks for a short loan.", "timeLimit": 10,
+    "options": [ {"text":"Lend $200","effects":{"money":-200,"stress":1}}, {"text":"Decline kindly","effects":{"money":0,"stress":2}} ] },
+
+  { "id": 7, "category": "random", "order": "mid", "description": "Consider private health insurance.", "timeLimit": 12,
+    "options": [ {"text":"Join basic cover","effects":{"money":-300,"stress":-2}}, {"text":"Stay public","effects":{"money":0,"stress":0}} ] },
+
+  { "id": 8, "category": "random", "order": "mid", "description": "Car share membership discount.", "timeLimit": 9,
+    "options": [ {"text":"Join","effects":{"money":-50,"stress":-1}}, {"text":"No thanks","effects":{"money":0,"stress":0}} ] },
+
+  { "id": 9, "category": "random", "order": "mid", "prerequisite": "invested_in_stocks", "description": "Market dip this week (-10%).", "timeLimit": 14,
+    "options": [ {"text":"Buy the dip ($200)","effects":{"money":-200,"stocksValue":220,"stress":2}}, {"text":"Hold","effects":{"money":0,"stress":1}} ] },
+
+  { "id": 10, "category": "random", "order": "late", "prerequisite": "invested_in_stocks", "description": "Stock market crash (-35%).", "timeLimit": 20,
+    "options": [ {"text":"Sell now","effects":{"stocksValue":-400,"stress":15}}, {"text":"Diamond hands","effects":{"stocksValue":-250,"stress":10}} ] },
+
+  { "id": 11, "category": "random", "order": "late", "prerequisite": "invested_in_stocks", "description": "Bull run! Your portfolio surges.", "timeLimit": 12,
+    "options": [ {"text":"Take profit","effects":{"money":500,"stocksValue":-300,"stress":-3}}, {"text":"Let it ride","effects":{"money":0,"stocksValue":200,"stress":1}} ] },
+
+  { "id": 12, "category": "random", "order": "early", "description": "Bike theft insurance offer.", "timeLimit": 8,
+    "options": [ {"text":"Buy cover","effects":{"money":-60,"stress":-1}}, {"text":"Pass","effects":{"money":0,"stress":0}} ] },
+
+  { "id": 13, "category": "random", "order": "mid", "description": "Festival weekend—tickets on sale. Your FOMO is louder than your budget.", "timeLimit": 7,
+    "options": [ {"text":"Treat yourself","effects":{"money":-120,"stress":-4}}, {"text":"Skip it","effects":{"money":0,"stress":1}} ] },
+
+  { "id": 14, "category": "random", "order": "early", "description": "Side hustle idea: sell on marketplace.", "timeLimit": 10,
+    "options": [ {"text":"Invest $100 stock","effects":{"money":-100,"stress":2}}, {"text":"Nah","effects":{"money":0,"stress":0}} ] },
+
+  { "id": 15, "category": "random", "order": "mid", "description": "Unexpected dental bill.", "timeLimit": 9,
+    "options": [ {"text":"Get it fixed","effects":{"money":-300,"stress":2}}, {"text":"Delay (worsens)","effects":{"money":-50,"stress":6}} ] },
+
+  { "id": 16, "category": "random", "order": "late", "description": "Airfare sale: visit family?", "timeLimit": 12,
+    "options": [ {"text":"Buy flights","effects":{"money":-800,"stress":-4}}, {"text":"Save money","effects":{"money":0,"stress":1}} ] },
+
+  { "id": 17, "category": "random", "order": "late", "description": "New state levy introduced.", "timeLimit": 11,
+    "options": [ {"text":"Pay levy","effects":{"money":-220,"stress":2}}, {"text":"Complain to friends","effects":{"money":0,"stress":1}} ] },
+
+  { "id": 18, "category": "random", "order": "mid", "description": "Phone plan upsell offer.", "timeLimit": 7,
+    "options": [ {"text":"Upgrade","effects":{"money":-30,"stress":-1}}, {"text":"Keep current","effects":{"money":0,"stress":0}} ] },
+
+  { "id": 19, "category": "random", "order": "mid", "description": "Your roommate gets a pet. Split costs?", "timeLimit": 10,
+    "options": [ {"text":"Chip in","effects":{"money":-60,"stress":-2}}, {"text":"No thanks","effects":{"money":0,"stress":2}} ] },
+
+  { "id": 20, "category": "random", "order": "mid", "description": "Job referral bonus opportunity.", "timeLimit": 8,
+    "options": [ {"text":"Refer a friend","effects":{"money":200,"stress":-1}}, {"text":"Ignore","effects":{"money":0,"stress":0}} ] },
+
+  { "id": 21, "category": "random", "order": "early", "description": "Buy Myki/Opal travel card.", "timeLimit": 8,
+    "options": [ {"text":"Top up $50","effects":{"money":-50,"stress":-1}}, {"text":"Pay as you go","effects":{"money":-10,"stress":0}} ] },
+
+  { "id": 22, "category": "random", "order": "late", "description": "Charity gala invite.", "timeLimit": 7,
+    "options": [ {"text":"Donate and attend","effects":{"money":-150,"stress":-2}}, {"text":"Send regards","effects":{"money":0,"stress":0}} ] },
+
+  { "id": 23, "category": "random", "order": "early", "description": "Set up emergency fund?", "timeLimit": 10,
+    "options": [ {"text":"Save $300","effects":{"money":-300,"stress":-2}}, {"text":"Later","effects":{"money":0,"stress":1}} ] },
+
+  { "id": 24, "category": "random", "order": "late", "description": "Crypto friend shills a coin called 'KangaMoon'. What could go wrong?", "timeLimit": 8,
+    "options": [ {"text":"Speculate $100","effects":{"money":-100,"stress":4}}, {"text":"Hard pass","effects":{"money":0,"stress":-1}} ] },
+
+  { "id": 25, "category": "random", "order": "late", "description": "Tax offset announced.", "timeLimit": 12,
+    "options": [ {"text":"Adjust withholding","effects":{"money":100,"stress":-1}}, {"text":"Ignore","effects":{"money":0,"stress":0}} ] }
+]

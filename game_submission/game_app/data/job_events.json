@@ -1,0 +1,224 @@
+[
+  {
+    "id": 1,
+    "category": "job",
+    "order": "early",
+    "description": "Apply for a Tax File Number (TFN). Do it now or risk delayed pay.",
+    "timeLimit": 12,
+    "timeoutEffect": { "money": -100, "stress": 5 },
+    "options": [
+      { "text": "Apply online today", "effects": { "money": -20, "stress": -2 }},
+      { "text": "Leave it for later", "effects": { "money": -100, "stress": 5 }}
+    ]
+  },
+  {
+    "id": 2,
+    "category": "job",
+    "order": "early",
+    "description": "Your visa requires a health check. Pay now or delay your start date.",
+    "timeLimit": 15,
+    "timeoutEffect": { "money": -300, "stress": 8 },
+    "options": [
+      { "text": "Book the appointment", "effects": { "money": -250, "stress": 2 }},
+      { "text": "Wait for a cheaper slot", "effects": { "money": -150, "stress": 6 }}
+    ]
+  },
+  {
+    "id": 3,
+    "category": "job",
+    "order": "early",
+    "description": "A recruiter asks for a resume rewrite service.",
+    "timeLimit": 10,
+    "options": [
+      { "text": "Pay for professional rewrite", "effects": { "money": -120, "stress": -3 }},
+      { "text": "DIY the resume", "effects": { "money": 0, "stress": 3 }}
+    ]
+  },
+  {
+    "id": 4,
+    "category": "job",
+    "order": "early",
+    "description": "You get invited to a first-round interview for a retail role.",
+    "timeLimit": 20,
+    "options": [
+      { "text": "Buy new interview clothes", "effects": { "money": -150, "stress": -2 }},
+      { "text": "Go with what you have", "effects": { "money": 0, "stress": 1 }}
+    ]
+  },
+  {
+    "id": 5,
+    "category": "job",
+    "order": "early",
+    "description": "A cafe offers a part-time barista job starting tomorrow.",
+    "timeLimit": 12,
+    "options": [
+      { "text": "Accept the shifts", "effects": { "money": 400, "stress": 5 }},
+      { "text": "Hold out for office work", "effects": { "money": 0, "stress": 0 }}
+    ]
+  },
+  {
+    "id": 6,
+    "category": "job",
+    "order": "early",
+    "description": "Unpaid internship opportunity in your field for 2 weeks.",
+    "timeLimit": 14,
+    "options": [
+      { "text": "Take it for experience", "effects": { "money": -200, "stress": 4 }},
+      { "text": "Decline and job-hunt", "effects": { "money": 0, "stress": -1 }}
+    ]
+  },
+  {
+    "id": 7,
+    "category": "job",
+    "order": "mid",
+    "description": "Technical interview coding test this weekend.",
+    "timeLimit": 18,
+    "options": [
+      { "text": "Buy a prep course", "effects": { "money": -80, "stress": -4 }},
+      { "text": "Wing it", "effects": { "money": 0, "stress": 6 }}
+    ]
+  },
+  {
+    "id": 8,
+    "category": "job",
+    "order": "mid",
+    "description": "Choose between a 6-month contract and a permanent role.",
+    "timeLimit": 16,
+    "options": [
+      { "text": "Take the contract (more pay)", "effects": { "money": 1200, "stress": 8 }},
+      { "text": "Go permanent (stability)", "effects": { "money": 800, "stress": 2 }}
+    ]
+  },
+  {
+    "id": 9,
+    "category": "job",
+    "order": "mid",
+    "description": "Your team needs weekend overtime to hit a deadline.",
+    "timeLimit": 10,
+    "options": [
+      { "text": "Do overtime", "effects": { "money": 500, "stress": 12 }},
+      { "text": "Protect your weekend", "effects": { "money": 0, "stress": -4 }}
+    ]
+  },
+  {
+    "id": 10,
+    "category": "job",
+    "order": "mid",
+    "description": "Networking event ticket might help your career.",
+    "timeLimit": 9,
+    "options": [
+      { "text": "Buy ticket", "effects": { "money": -60, "stress": -1 }},
+      { "text": "Skip it", "effects": { "money": 0, "stress": 0 }}
+    ]
+  },
+  {
+    "id": 11,
+    "category": "job",
+    "order": "mid",
+    "description": "Your probation review is coming. Enroll in a short course?",
+    "timeLimit": 14,
+    "options": [
+      { "text": "Pay for course", "effects": { "money": -300, "stress": -3 }},
+      { "text": "Self-study", "effects": { "money": 0, "stress": 2 }}
+    ]
+  },
+  {
+    "id": 12,
+    "category": "job",
+    "order": "mid",
+    "description": "Salary negotiation time.",
+    "timeLimit": 12,
+    "options": [
+      { "text": "Ask for a raise", "effects": { "money": 1000, "stress": 6 }},
+      { "text": "Stay quiet", "effects": { "money": 0, "stress": -2 }}
+    ]
+  },
+  {
+    "id": 13,
+    "category": "job",
+    "order": "mid",
+    "description": "Side gig: weekend freelancing opportunity.",
+    "timeLimit": 15,
+    "options": [
+      { "text": "Take the gig", "effects": { "money": 700, "stress": 7 }},
+      { "text": "Focus on main job", "effects": { "money": 0, "stress": -1 }}
+    ]
+  },
+  {
+    "id": 14,
+    "category": "job",
+    "order": "late",
+    "description": "You're offered a promotion to team lead.",
+    "timeLimit": 18,
+    "options": [
+      { "text": "Accept leadership", "effects": { "money": 2000, "stress": 15 }},
+      { "text": "Stay IC", "effects": { "money": 800, "stress": -3 }}
+    ]
+  },
+  {
+    "id": 15,
+    "category": "job",
+    "order": "late",
+    "description": "Your company announces redundancies. Take a package?",
+    "timeLimit": 10,
+    "options": [
+      { "text": "Take redundancy", "effects": { "money": 2500, "stress": 10 }},
+      { "text": "Stay and compete", "effects": { "money": 0, "stress": 12 }}
+    ]
+  },
+  {
+    "id": 16,
+    "category": "job",
+    "order": "late",
+    "description": "Start your own small business (ABN, setup costs).",
+    "timeLimit": 20,
+    "options": [
+      { "text": "Start it", "effects": { "money": -800, "stress": 12 }},
+      { "text": "Not now", "effects": { "money": 0, "stress": -2 }}
+    ]
+  },
+  {
+    "id": 17,
+    "category": "job",
+    "order": "late",
+    "description": "Change industries? Requires training investment.",
+    "timeLimit": 16,
+    "options": [
+      { "text": "Retrain", "effects": { "money": -600, "stress": 5 }},
+      { "text": "Stay put", "effects": { "money": 0, "stress": -1 }}
+    ]
+  },
+  {
+    "id": 18,
+    "category": "job",
+    "order": "late",
+    "description": "Your commute is costly. Buy a bike pass?",
+    "timeLimit": 9,
+    "options": [
+      { "text": "Buy annual PT pass", "effects": { "money": -1500, "stress": -4 }},
+      { "text": "Pay per trip", "effects": { "money": -120, "stress": 0 }}
+    ]
+  },
+  {
+    "id": 19,
+    "category": "job",
+    "order": "mid",
+    "description": "Certification exam window opens.",
+    "timeLimit": 14,
+    "options": [
+      { "text": "Sit the exam", "effects": { "money": -400, "stress": 6 }},
+      { "text": "Skip for now", "effects": { "money": 0, "stress": -1 }}
+    ]
+  },
+  {
+    "id": 20,
+    "category": "job",
+    "order": "early",
+    "description": "Open a local bank account to avoid international fees.",
+    "timeLimit": 12,
+    "options": [
+      { "text": "Open account now", "effects": { "money": -10, "stress": -2 }},
+      { "text": "Keep using foreign card", "effects": { "money": -60, "stress": 2 }}
+    ]
+  }
+]

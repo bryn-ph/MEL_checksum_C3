@@ -5,3 +5,8 @@ Prompt2: Generate around 60 different cards for "House of Cards", distributed as
 - 12 Action cards (name + play effect),
 - 10 Crisis cards (name + market-wide effect).
 For each card include a short flavour text line (1 sentence). Output as JSON array with keys: type, id, name, text, effect, price (if property), rent (if property), risk (if property). Also include a full explanation as to what the card does  so that a user can hover over an icon on the card and see it.
+
+Prompt3: add decisions that must be made within x seconds with an on screen cool looking timer. if the decision isn't made in time a bad effect related to the decision will happen.
+prompt4: add menu screen Also feel free to add any libraries that will make it better and look and feel better.
+prompt5: add a money and stress counter, also a debt counter that appears when you go into debt
+prompt6: add navigation/quit button to go back to main menu.
