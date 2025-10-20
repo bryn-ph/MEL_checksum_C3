@@ -399,6 +399,10 @@ function runMinigame(name, config = {}) {
             runWhackAFee(root, config).then(closeWith).catch(() => cancel());
         } else if (name === 'typing-challenge') {
             runTypingChallenge(root, config).then(closeWith).catch(() => cancel());
+        } else if (name === 'reaction-click') {
+            runReactionClick(root, config).then(closeWith).catch(() => cancel());
+        } else if (name === 'quick-math') {
+            runQuickMath(root, config).then(closeWith).catch(() => cancel());
         } else {
             // Unknown minigame -> close with no bonus
             closeWith({});
@@ -615,6 +619,101 @@ function runTypingChallenge(root, config = {}) {
     });
 }
 
+// Reaction Click: wait for green then click ASAP; faster = higher reward
+function runReactionClick(root, config = {}) {
+    return new Promise((resolve) => {
+        const minDelay = Math.max(600, Number(config.minDelayMs) || 800);
+        const maxDelay = Math.max(minDelay + 400, Number(config.maxDelayMs) || 2500);
+        const maxReward = Math.max(50, Number(config.maxReward) || 200);
+
+        const header = document.createElement('div');
+        header.className = 'minigame-header';
+        header.innerHTML = `<div>⚡ Reaction Test</div><div>Wait for green, then click!</div>`;
+        const area = document.createElement('div');
+        area.className = 'minigame-area';
+        area.style.display = 'grid';
+        area.style.placeItems = 'center';
+        const prompt = document.createElement('div');
+        prompt.textContent = 'Wait...';
+        prompt.style.fontSize = '22px';
+        area.appendChild(prompt);
+        const footer = document.createElement('div');
+        footer.className = 'd-flex justify-content-end mt-2';
+        const quitBtn = document.createElement('button');
+        quitBtn.className = 'btn btn-outline-secondary btn-sm';
+        quitBtn.textContent = 'Quit';
+        footer.appendChild(quitBtn);
+
+        root.appendChild(header); root.appendChild(area); root.appendChild(footer);
+
+        let canClick = false;
+        let greenAt = 0;
+        const delay = Math.random() * (maxDelay - minDelay) + minDelay;
+        const timer = setTimeout(() => {
+            canClick = true; greenAt = performance.now();
+            area.style.background = '#e7fbe9';
+            prompt.textContent = 'Click!';
+        }, delay);
+
+        area.onclick = () => {
+            if (!canClick) { playSfx('lose'); resolve({ money: 0, stress: 1 }); return; }
+            const rt = performance.now() - greenAt; // ms
+            const clamped = Math.max(50, Math.min(700, rt));
+            const score = Math.round(maxReward * (1 - (clamped - 50) / (700 - 50)));
+            if (score >= maxReward * 0.8) awardAchievement('Lightning Reflex');
+            clearTimeout(timer);
+            resolve({ money: Math.max(0, score), stress: -1 });
+        };
+
+        quitBtn.onclick = () => { clearTimeout(timer); resolve({ money: 0, stress: 0 }); };
+    });
+}
+
+// Quick Math: answer a simple expression correctly within time
+function runQuickMath(root, config = {}) {
+    return new Promise((resolve) => {
+        const seconds = Math.max(5, Math.min(20, Number(config.seconds) || 8));
+        const reward = Math.max(50, Number(config.reward) || 200);
+        const a = Math.floor(Math.random() * 20) + 5;
+        const b = Math.floor(Math.random() * 12) + 3;
+        const ops = ['+','-','×'];
+        const op = ops[Math.floor(Math.random()*ops.length)];
+        const ans = op === '+' ? a + b : op === '-' ? a - b : a * b;
+
+        const header = document.createElement('div');
+        header.className = 'minigame-header';
+        header.innerHTML = `<div>🧮 Quick Math</div><div><strong>Time:</strong> <span id="mgm-timer">${seconds}</span>s</div>`;
+        const wrap = document.createElement('div');
+        wrap.className = 'typing-wrap';
+        const prompt = document.createElement('div');
+        prompt.innerHTML = `Solve: <span class="typing-word">${a} ${op} ${b}</span>`;
+        const input = document.createElement('input');
+        input.className = 'typing-input'; input.setAttribute('type','number');
+        input.setAttribute('placeholder','Your answer');
+        wrap.appendChild(prompt); wrap.appendChild(input);
+        const footer = document.createElement('div'); footer.className = 'd-flex justify-content-end mt-2';
+        const btn = document.createElement('button'); btn.className = 'btn btn-primary btn-sm'; btn.textContent = 'Submit';
+        footer.appendChild(btn);
+
+        root.appendChild(header); root.appendChild(wrap); root.appendChild(footer);
+        input.focus();
+
+        let timeLeft = seconds; const timerEl = header.querySelector('#mgm-timer');
+        const timer = setInterval(() => {
+            timeLeft -= 1; if (timerEl) timerEl.textContent = String(timeLeft);
+            if (timeLeft <= 0) { clearInterval(timer); resolve({ money: 0, stress: 1 }); }
+        }, 1000);
+
+        function submit() {
+            const val = Number(input.value);
+            clearInterval(timer);
+            if (val === ans) { awardAchievement('Human Calculator'); resolve({ money: reward, stress: -2 }); }
+            else { resolve({ money: 0, stress: 1 }); }
+        }
+        btn.onclick = submit; input.addEventListener('keydown', e => { if (e.key === 'Enter') submit(); });
+    });
+}
+
 // Simple SFX system (no external assets)
 function playSfx(kind) {
     try {
@@ -821,6 +920,8 @@ async function initializeGame() {
     const playCoin = document.getElementById('play-coinrush');
     const playFee = document.getElementById('play-billdodge');
     const playTyping = document.getElementById('play-typing');
+    const playReaction = document.getElementById('play-reaction');
+    const playMath = document.getElementById('play-math');
     const menuToast = document.getElementById('menu-toast');
 
     function showMenuToast(msg, good = true) {
@@ -863,6 +964,16 @@ async function initializeGame() {
     if (playTyping) playTyping.onclick = () => {
         runMinigame('typing-challenge', { seconds: 8, reward: 250 }).then(eff => {
             showMenuToast(`Typing Challenge: Reward $${eff.money || 0}.`, true);
+        }).catch(() => showMenuToast('Minigame cancelled.', false));
+    };
+    if (playReaction) playReaction.onclick = () => {
+        runMinigame('reaction-click', { maxReward: 200 }).then(eff => {
+            showMenuToast(`Reaction Test: Reward $${eff.money || 0}.`, true);
+        }).catch(() => showMenuToast('Minigame cancelled.', false));
+    };
+    if (playMath) playMath.onclick = () => {
+        runMinigame('quick-math', { seconds: 8, reward: 200 }).then(eff => {
+            showMenuToast(`Quick Math: Reward $${eff.money || 0}.`, true);
         }).catch(() => showMenuToast('Minigame cancelled.', false));
     };
 

@@ -52,7 +52,7 @@
     "description": "A cafe offers a part-time barista job starting tomorrow.",
     "timeLimit": 12,
     "options": [
-      { "text": "Accept the shifts", "effects": { "money": 400, "stress": 5 }},
+      { "text": "Accept the shifts", "effects": { "money": 400, "stress": 5, "meta": { "minigame": "reaction-click", "minigameConfig": { "maxReward": 180 } } }},
       { "text": "Hold out for office work", "effects": { "money": 0, "stress": 0 }}
     ]
   },
@@ -129,7 +129,7 @@
     "description": "Salary negotiation time.",
     "timeLimit": 12,
     "options": [
-      { "text": "Ask for a raise", "effects": { "money": 1000, "stress": 6 }},
+      { "text": "Ask for a raise", "effects": { "money": 1000, "stress": 6, "meta": { "minigame": "typing-challenge", "minigameConfig": { "seconds": 7, "reward": 200 } } }},
       { "text": "Stay quiet", "effects": { "money": 0, "stress": -2 }}
     ]
   },
@@ -206,7 +206,7 @@
     "description": "Certification exam window opens.",
     "timeLimit": 14,
     "options": [
-      { "text": "Sit the exam", "effects": { "money": -400, "stress": 6 }},
+      { "text": "Sit the exam", "effects": { "money": -400, "stress": 6, "meta": { "minigame": "quick-math", "minigameConfig": { "seconds": 8, "reward": 220 } } }},
       { "text": "Skip for now", "effects": { "money": 0, "stress": -1 }}
     ]
   },

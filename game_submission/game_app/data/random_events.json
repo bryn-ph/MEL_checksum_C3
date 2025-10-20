@@ -6,7 +6,7 @@
     "options": [ {"text":"Deposit $200","effects":{"money":-200,"stocksValue":200,"stress":0}}, {"text":"Skip for now","effects":{"money":0,"stress":0}} ] },
 
   { "id": 3, "category": "random", "order": "early", "description": "Phone breaks. Repair or replace?", "timeLimit": 10,
-    "options": [ {"text":"Repair","effects":{"money":-180,"stress":1}}, {"text":"Replace","effects":{"money":-900,"stress":0}} ] },
+    "options": [ {"text":"Repair","effects":{"money":-180,"stress":1, "meta": {"minigame":"reaction-click", "minigameConfig": {"maxReward": 120}}}}, {"text":"Replace","effects":{"money":-900,"stress":0}} ] },
 
   { "id": 4, "category": "random", "order": "mid", "description": "Medicare levy notice.", "timeLimit": 12,
     "options": [ {"text":"Pay now","effects":{"money":-250,"stress":1}}, {"text":"Payment plan","effects":{"money":-80,"debt":170,"stress":2}} ] },
@@ -36,7 +36,7 @@
     "options": [ {"text":"Buy cover","effects":{"money":-60,"stress":-1}}, {"text":"Pass","effects":{"money":0,"stress":0}} ] },
 
   { "id": 13, "category": "random", "order": "mid", "description": "Festival weekend—tickets on sale. Your FOMO is louder than your budget.", "timeLimit": 7,
-    "options": [ {"text":"Treat yourself","effects":{"money":-120,"stress":-4}}, {"text":"Skip it","effects":{"money":0,"stress":1}} ] },
+    "options": [ {"text":"Treat yourself","effects":{"money":-120,"stress":-4, "meta": {"minigame":"coin-rush", "minigameConfig": {"seconds": 8, "coinValue": 30}}}}, {"text":"Skip it","effects":{"money":0,"stress":1}} ] },
 
   { "id": 14, "category": "random", "order": "early", "description": "Side hustle idea: sell on marketplace.", "timeLimit": 10,
     "options": [ {"text":"Invest $100 stock","effects":{"money":-100,"stress":2}}, {"text":"Nah","effects":{"money":0,"stress":0}} ] },
