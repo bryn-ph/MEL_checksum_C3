@@ -1,12 +1,17 @@
-Prompt1: Give me an example of the html/javascript/css for a housing game focused on player against ai opponent. Where the goal is to have the highest net worth through playing different cards which are either property, action or event cards. Each player should start with some cash and a small starting loan.
-Prompt2: Generate around 60 different cards for "House of Cards", distributed as: 
-- 18 Property cards (include name, price, base rent, risk level),
-- 20 Event cards (one-line text + effect description),
-- 12 Action cards (name + play effect),
-- 10 Crisis cards (name + market-wide effect).
-For each card include a short flavour text line (1 sentence). Output as JSON array with keys: type, id, name, text, effect, price (if property), rent (if property), risk (if property). Also include a full explanation as to what the card does  so that a user can hover over an icon on the card and see it.
-
-Prompt3: add decisions that must be made within x seconds with an on screen cool looking timer. if the decision isn't made in time a bad effect related to the decision will happen.
-prompt4: add menu screen Also feel free to add any libraries that will make it better and look and feel better.
-prompt5: add a money and stress counter, also a debt counter that appears when you go into debt
-prompt6: add navigation/quit button to go back to main menu.
+Prompt1: Write the base code for a choose your own adventure text based game where you play as a person moving to Australia wanting to get a job and eventually buy a house. Its got to be very interactive and engaging.  I want it to cover the struggles of getting a job, a house, paying bills on time, and random life problems that come up to do with money in the economy like stock crashes rent rising and new taxes.
+Prompt2: add decisions that must be made within x seconds with an on screen cool looking timer. if the decision isn't made in time a bad effect related to the decision will happen.
+prompt3: add menu screen Also feel free to add any libraries that will make it better and look and feel better.
+prompt4: add a money and stress counter, also a debt counter that appears when you go into debt
+prompt5: add navigation/quit button to go back to main menu.
+prompt6: Lets create a json/multiple json files that contains all the different life decisions and events that could happen i want there to be  50+ events due to getting a job and housing expenses and random events that could happen.
+prompt7: now integrate these into game the game logic have the random events randomly occur.
+prompt8: addd more events into the json store the specific time, if there is a timelimit for the decision. also group the decisions based on order in which they should or could occur eg have different pools of responses based on how many questions have been asked before the current question keeping in mind the game should go on from between 5 to 35 questions. retrieve the questions from the data files also make the stock stuff make sense you should have counters that can appear for each different event that might require a new counter eg if you get stock related questions first you would have had to have a question related to putting money into stocks. 
+prompt9: add clear button functionality to go back to the start when the game is quit also add game over screens and success screens have funny messages and meaningful life messages pop up for each. also adjust the css to look nice and really stylised for everything. should be styled and themed based on money, houses, stocks. 
+Prompt10: Generate 50+ realistic events (jobs, visas, interviews, rent hikes, utilities, inspections, stock buy/sell, tax changes).
+Prompt11: Apply a themed visual style (green/gold finance gradients, house/stock icon badges, animated progress bar).
+prompt12: it needs to be more interactive i want the result of the event to appear on screen eg everything goes wrong and you have lost 700$ or massive success and you have now made money or made some friends at work. I also want the screen to flash green or red if something lucky or unlucky happens. I want there to be some realism and funny events with funny comments.
+prompt13: include events like having to pay rent and then having the option to wait and not pay it which increases the bills and expenses in the future
+prompt14: add mini games in between questions of special events eg events where you are at work and need to collect money and anything else cool you can think of.
+prompt15: Add a “bill dodge” minigame for housing: whack-a-fee style to reduce arrears.
+Add a keyboard mini-challenge for “coding test” job events (type-the-word within time).
+Add badges/achievements for high scores and a mute toggle for light sfx.

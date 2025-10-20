@@ -1,1 +1,0 @@
-Prompt1: Generate 6 minimal SVG icons suitable for a 2D card game UI (line + flat style). Icons: 'house', 'rent', 'eviction', 'government', 'renovation/hammer', 'tiny-home'. Provide SVG code only (no wrappers). Keep file size small, simple paths, 128x128 viewBox, single-color strokes and fill. Output each SVG labelled with a filename comment.
