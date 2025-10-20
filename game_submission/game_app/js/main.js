@@ -1,4 +1,54 @@
+function ensureFavicon() {
+    try {
+        // If a PNG favicon already exists, respect it
+        const hasPng = document.querySelector('link[rel="icon"][type="image/png"]');
+        if (hasPng) return;
+
+        // Remove non-PNG favicon candidates to avoid precedence ambiguity
+        document.querySelectorAll('link[rel="icon"]').forEach(el => {
+            const t = (el.getAttribute('type') || '').toLowerCase();
+            if (t !== 'image/png') el.parentNode && el.parentNode.removeChild(el);
+        });
+
+        const canvas = document.createElement('canvas');
+        canvas.width = 64; canvas.height = 64;
+        const ctx = canvas.getContext('2d');
+        const r = 12;
+
+        // Draw rounded green square
+        ctx.fillStyle = '#0FA958';
+        ctx.beginPath();
+        const w = 64, h = 64;
+        ctx.moveTo(r, 0);
+        ctx.arcTo(w, 0, w, h, r);
+        ctx.arcTo(w, h, 0, h, r);
+        ctx.arcTo(0, h, 0, 0, r);
+        ctx.arcTo(0, 0, w, 0, r);
+        ctx.closePath();
+        ctx.fill();
+
+        // White dollar sign
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 38px Segoe UI, Arial, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('$', 32, 36);
+
+        const href = canvas.toDataURL('image/png');
+        const link = document.createElement('link');
+        link.rel = 'icon';
+        link.type = 'image/png';
+        link.sizes = '64x64';
+        link.href = href;
+        document.head.appendChild(link);
+    } catch (_) {
+        // non-fatal; favicon is optional
+    }
+}
+
 async function initializeGame() {
+    // Ensure a visible favicon across browsers and file:// contexts
+    ensureFavicon();
     const menuContainer = document.getElementById("menu-container");
     const gameContainer = document.getElementById("game-container");
     const startGameButton = document.getElementById("start-game");
