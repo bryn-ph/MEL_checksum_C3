@@ -1,0 +1,10 @@
+prompt1: currently you are just running through the scenes in the app.js file and not getting from the json. I want the event to come from the json and i want them to be able to only be asked once. 
+prompt2: Visual polish: add small icons/badges to the result banner; subtle particle/confetti for big wins.
+prompt3: improve the ui. I want menu screen, and then a game screen. I want there to better ui options on the game screen, i want icons, i want nicer background colours, the time remaining to have a status bar. more indication as to what happens from indecisiveness for options.
+prompt4: when playing the game keeps freezing. Getting this error app.js:145 Uncaught SyntaxError: Failed to execute 'add' on 'DOMTokenList': The token provided must not be empty.
+    at showResultFeedback (app.js:145:22)
+    at button.onclick (app.js:228:13)
+prompt5: the mini games aren't working it won't even let me run them. Fix them so that the question will load them up and also add a separate section to the menu that lets me play the mini games if chosen to.
+prompt6: add more mini games and attach the mini games to more of the questions 
+prompt7: separate the javascript code into separate files for better practises.
+prompt8: for some reason the stress isn't resetting after the game ends and a new round starts

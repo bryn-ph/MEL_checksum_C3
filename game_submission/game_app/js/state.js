@@ -3,6 +3,8 @@ const MAX_QUESTIONS = 35;
 const gameState = {
     cash: 2000,
     debt: 0,
+  // Player well-being
+  stress: 0,
     properties: [],
     timer: null, // active interval id for countdown
     questionCount: 0,
@@ -132,6 +134,7 @@ function resetGameState() {
 
   gameState.cash = 2000;
   gameState.debt = 0;
+  gameState.stress = 0;
   gameState.properties = [];
   gameState.timer = null;
   gameState.questionCount = 0;

@@ -69,6 +69,8 @@ async function initializeGame() {
     }
 
     if (startGameButton) startGameButton.onclick = () => {
+        // Always reset to ensure stress and other stats start fresh
+        try { resetGameState(); } catch (e) {}
         menuContainer.classList.add("d-none");
         gameContainer.classList.remove("d-none");
         renderNextEvent();
