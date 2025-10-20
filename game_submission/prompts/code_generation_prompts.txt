@@ -15,3 +15,5 @@ prompt14: add mini games in between questions of special events eg events where 
 prompt15: Add a “bill dodge” minigame for housing: whack-a-fee style to reduce arrears.
 Add a keyboard mini-challenge for “coding test” job events (type-the-word within time).
 Add badges/achievements for high scores and a mute toggle for light sfx.
+prompt16: add status effects and conditions and rewards based on having a certain job.
+prompt17: write the readme now in regards to the current text based adventure.

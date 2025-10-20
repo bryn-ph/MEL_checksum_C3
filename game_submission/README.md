@@ -1,98 +1,117 @@
-# 🏠 House of Cards: The Housing Crisis
+# Dollar Decisions In The Land Down Under
 
-A 2–6 player satirical card game about surviving Australia’s housing market.
+A fast, data‑driven text adventure about moving to Australia — land a job, find a roof, dodge fees, and try not to rage‑quit the housing market. Built with HTML + CSS + vanilla JS, backed by JSON event data and a handful of quick minigames.
 
-## 🎴 Components
-- 18 Property Cards — Buy, rent, or risk foreclosure  
-- 20 Event Cards — Random life events that shake the market  
-- 12 Action Cards — Strategic plays (Sell, Swap, Sue, etc.)  
-- 10 Crisis Cards — Trigger global market effects every few rounds  
-- Money Tokens / Digital Counter — Tracks cash and debt  
-- Player Reference Sheet (optional) — Summarizes turn order & icons
+Play it from `game_submission/game_app/index.html`.
 
-## 🧩 Setup
-1. Shuffle all Property, Event, and Action cards into one Main Deck.  
-2. Shuffle the Crisis Deck separately.  
-3. Each player starts with:
-   - 💰 $2,000 cash  
-   - 🏚️ No properties  
-   - 💳 Debt limit: $3,000 (you can’t owe more than this)  
-4. Draw 3 cards from the Main Deck.  
-5. Determine the starting player (youngest goes first or roll a die).
+## Highlights
+- Data‑driven events: 50+ job, housing, and random scenarios loaded from JSON, with early/mid/late progression and prerequisites.
+- Realistic money mechanics: Money, Debt, Stress, and optional Stocks; rent arrears and a housing cost multiplier if you delay paying rent.
+- Timed choices: Each event can have a countdown; if you time out, a “worst likely” outcome is applied.
+- Minigames: Short skill checks launched from event options or from the menu’s Playground.
+  - Coin Rush, Bill Dodge, Typing Challenge, Reaction Test, Quick Math
+- Quality‑of‑life: Achievements, SFX toggle, category badges, progress bar, result banners, confetti on big wins.
+- Resilient offline behavior: If JSON fetch fails (e.g., when run via `file://`), the game uses a small built‑in demo set so you can still play.
 
-## 🔁 Turn Structure
-Each turn follows these phases:
+## Project structure
+```
+game_submission/
+  game_app/
+    index.html           # App shell + menu and overlay DOM
+    assets/
+      icon.svg           # App icon (also embedded as data‑URL favicon)
+    css/
+      style.css          # Styles for HUD, timers, effects, minigames
+    data/
+      job_events.json    # Job scenarios
+      housing_events.json# Housing scenarios (incl. rent mechanics)
+      random_events.json # Random economic/life events
+    js/
+      state.js           # Core game state + helpers
+      ui.js              # Counters, feedback, sfx, achievements
+      data.js            # Event loading + fallbacks
+      minigames.js       # Minigame framework and implementations
+      engine.js          # Event selection, timing, effects application
+      main.js            # App initialization and menu wiring
+```
 
-1. **Draw Phase**
-   - Draw 1 card from the Main Deck.  
-   - Maximum hand size = 5 cards (discard extras immediately).
+## How to run locally
+You can open `index.html` directly, but many browsers block JSON fetches over `file://`. If that happens, you’ll see a banner and the app will switch to demo events.
 
-2. **Play Phase**
-   - You may play up to 2 cards:
-     - Property Card: Pay its price to buy it.  
-     - Event Card: Apply the effect instantly.  
-     - Action Card: Apply as described (e.g., “Swap a property,” “Force another player to pay rent”).  
-   - You may also take a loan during your turn (see "Loan Rules").
+For full content, serve the folder with a tiny static server.
 
-3. **Resolve Phase**
-   - Resolve ongoing effects or triggered abilities (e.g., “double rent this turn”).
+Optional commands (pick one):
 
-4. **Income Phase**
-   - Collect base rent from each owned property.  
-   - Example: Own “Sydney Apartment” (Rent $200) and “Regional House” (Rent $100) → gain $300.
+- PowerShell + Python 3 (if installed)
+  - python -m http.server 8000 -d "game_submission/game_app"
 
-5. **End Phase**
-   - Discard down to 5 cards.  
-   - Pass the turn clockwise.
+- Node.js (if installed)
+  - npx serve "game_submission/game_app" -l 8000
 
-## 💣 Market & Crisis Phase
-- Every 3 full rounds, draw a Crisis Card and apply it to all players.  
-- Example Crisis effects:
-  - 🧨 **Interest Rates Surge** — Each player pays $200 × number of properties.  
-  - 🌊 **Floods Hit the Coast** — High-risk properties lose rent for 2 rounds.  
-- After resolving a Crisis Card, discard it and continue play.
+- VS Code extension
+  - Install “Live Server”, then right‑click `index.html` → “Open with Live Server”.
 
-## 💳 Loan Rules
-- Players can borrow up to $3,000 total at any time.  
-- Loans must be repaid with +10% interest before the game ends.  
-- If you cannot pay, your highest-value property is repossessed.  
-- Example: Borrow $1,000 → owe $1,100 later. If you end the game with only $500 → lose your top property.
+Then visit http://localhost:8000/
 
-## 🏁 Win / Lose Conditions
+## Gameplay basics
+- Stats: Money, Debt (appears only when > 0), Stress, optional Stocks, and Progress (35 questions target).
+- Housing: If you “wait to pay” rent, you accrue Rent Arrears and increase a Housing Cost Multiplier that makes future housing costs more expensive until cleared.
+- Failure checks: Bankrupt or over‑stressed states trigger game over; strong performance leads to success.
 
-### 🏆 Winning
-- The game ends after 10 rounds or when the Crisis Deck runs out.  
-- The player with the highest Net Worth (cash + property value − debt) wins.
+## Event data format (JSON)
+Each event has a category (job/housing/random), a stage order (early/mid/late), description, an optional timeLimit, and a set of options. Effects apply to stats, and meta fields unlock extras like minigames or rent logic.
 
-### 💀 Losing
-- A player goes bankrupt if they cannot pay rent, debt, or event costs.  
-- Bankrupt players sell all properties at half value and are eliminated.
+Example:
+```json
+{
+  "id": 24,
+  "category": "housing",
+  "order": "mid",
+  "description": "Bills piling up—dodge fees to clear arrears!",
+  "timeLimit": 10,
+  "options": [
+    {
+      "text": "Play Bill Dodge",
+      "effects": {
+        "stress": 1,
+        "meta": {
+          "minigame": "whack-a-fee",
+          "minigameConfig": { "seconds": 10, "reducePerHit": 120, "spawnMs": 550 }
+        }
+      }
+    },
+    { "text": "Ignore it", "effects": { "money": 0, "stress": 2 } }
+  ],
+  "timeoutEffect": { "money": -100, "stress": 6 }
+}
+```
 
-## 🧮 Example Turn
-Player A starts with $2,000 and owns “Melbourne Flat (Rent $150)”.
+Effects keys: `money`, `debt`, `stress`, `stocksValue`, and `meta`.
 
-1. **Draw:** Pulls an Event card — “Rent Hike!”  
-2. **Play:** Plays “Rent Hike” (+$50 rent to all properties this round).  
-3. **Buy:** Purchases “Hobart Unit” for $800. Remaining cash: $1,200.  
-4. **Collect Rent:** $150 + $100 + $50 bonus = $300 total.  
-5. **End Turn:** Now has $1,500. Passes to next player.
+Useful `meta` patterns:
+- `minigame`: one of `coin-rush`, `whack-a-fee`, `typing-challenge`, `reaction-click`, `quick-math` (use `minigameConfig` to tune).
+- `includeArrears`: add current arrears into the money delta when paying.
+- `addArrearsAmount`: increase rent arrears (e.g., when you delay rent).
+- `increaseHousingCosts`: raise future negative housing costs by a multiplier.
+- `reduceArrearsBy`, `reduceHousingMultiplier`: lower arrears/multiplier (often via minigames or good choices).
 
-## ❓ Quick FAQ
-- Q: Can I play two of the same type of card in one turn?  
-  A: Yes, as long as you don’t exceed 2 total cards per turn.
+## Minigames
+- Coin Rush — click coins to earn cash quickly.
+- Bill Dodge (Whack‑a‑Fee) — clear as many fees as you can to reduce arrears.
+- Typing Challenge — type the prompt within the time for a payout.
+- Reaction Test — wait for green and click fast; faster = more money.
+- Quick Math — solve a simple expression before the timer ends.
 
-- Q: What if I can’t pay a cost?  
-  A: You may take a loan or sell a property. If still unable, you go bankrupt.
+Minigames run in an overlay and return effects that merge with the chosen option.
 
-- Q: Can Event effects stack?  
-  A: Yes, unless the card says “cannot stack.”
+## Contributing content
+- Add events under `game_app/data/*.json`. Keep IDs unique per file and include `category` + `order`.
+- Use `timeoutEffect` to control outcomes when players don’t choose in time; if omitted, the engine derives a “slightly worse than worst” fallback.
+- To attach a minigame, set `effects.meta.minigame` and optional `minigameConfig`.
 
-- Q: What if multiple Crisis effects conflict?  
-  A: Apply them in the order drawn. Later effects overwrite earlier ones if contradictory.
+## Brand & assets
+- App icon at `game_app/assets/icon.svg`. The page also inlines a small data‑URL favicon and generates a PNG favicon at runtime for broader compatibility.
 
-- Q: Can I trade with other players?  
-  A: Optional house rule — trades allowed once per round; both players must agree.
+---
 
-## 💬 Game Message
-> “Home ownership isn’t just a game — it’s becoming a privilege.”  
-> “Luck shouldn’t decide who gets a roof.”
+Made for hackathon vibes — practical, playful, and easy to extend.
