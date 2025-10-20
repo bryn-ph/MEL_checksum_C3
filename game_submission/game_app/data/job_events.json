@@ -52,7 +52,21 @@
     "description": "A cafe offers a part-time barista job starting tomorrow.",
     "timeLimit": 12,
     "options": [
-      { "text": "Accept the shifts", "effects": { "money": 400, "stress": 5, "meta": { "minigame": "reaction-click", "minigameConfig": { "maxReward": 180 } } }},
+      {
+        "text": "Accept the shifts",
+        "effects": {
+          "money": 400,
+          "stress": 5,
+          "meta": { "minigame": "reaction-click", "minigameConfig": { "maxReward": 180 } }
+        },
+        "meta": {
+          "hiredJob": {
+            "title": "Part-time Barista",
+            "salary": 42000,
+            "type": "part-time"
+          }
+        }
+      },
       { "text": "Hold out for office work", "effects": { "money": 0, "stress": 0 }}
     ]
   },
@@ -63,7 +77,17 @@
     "description": "Unpaid internship opportunity in your field for 2 weeks.",
     "timeLimit": 14,
     "options": [
-      { "text": "Take it for experience", "effects": { "money": -200, "stress": 4 }},
+      {
+        "text": "Take it for experience",
+        "effects": { "money": -200, "stress": 4 },
+        "meta": {
+          "hiredJob": {
+            "title": "Intern (Unpaid)",
+            "salary": 0,
+            "type": "internship"
+          }
+        }
+      },
       { "text": "Decline and job-hunt", "effects": { "money": 0, "stress": -1 }}
     ]
   },
@@ -85,8 +109,28 @@
     "description": "Choose between a 6-month contract and a permanent role.",
     "timeLimit": 16,
     "options": [
-      { "text": "Take the contract (more pay)", "effects": { "money": 1200, "stress": 8 }},
-      { "text": "Go permanent (stability)", "effects": { "money": 800, "stress": 2 }}
+      {
+        "text": "Take the contract (more pay)",
+        "effects": { "money": 1200, "stress": 8 },
+        "meta": {
+          "hiredJob": {
+            "title": "Contract Developer",
+            "salary": 72000,
+            "type": "contract"
+          }
+        }
+      },
+      {
+        "text": "Go permanent (stability)",
+        "effects": { "money": 800, "stress": 2 },
+        "meta": {
+          "hiredJob": {
+            "title": "Software Engineer (Permanent)",
+            "salary": 65000,
+            "type": "permanent"
+          }
+        }
+      }
     ]
   },
   {
@@ -140,7 +184,17 @@
     "description": "Side gig: weekend freelancing opportunity.",
     "timeLimit": 15,
     "options": [
-      { "text": "Take the gig", "effects": { "money": 700, "stress": 7 }},
+      {
+        "text": "Take the gig",
+        "effects": { "money": 700, "stress": 7 },
+        "meta": {
+          "hiredJob": {
+            "title": "Freelancer (Side Gig)",
+            "salary": 12000,
+            "type": "side-gig"
+          }
+        }
+      },
       { "text": "Focus on main job", "effects": { "money": 0, "stress": -1 }}
     ]
   },
@@ -151,7 +205,17 @@
     "description": "You're offered a promotion to team lead.",
     "timeLimit": 18,
     "options": [
-      { "text": "Accept leadership", "effects": { "money": 2000, "stress": 15 }},
+      {
+        "text": "Accept leadership",
+        "effects": { "money": 2000, "stress": 15 },
+        "meta": {
+          "hiredJob": {
+            "title": "Team Lead",
+            "salary": 90000,
+            "type": "promotion"
+          }
+        }
+      },
       { "text": "Stay IC", "effects": { "money": 800, "stress": -3 }}
     ]
   },
@@ -173,7 +237,17 @@
     "description": "Start your own small business (ABN, setup costs).",
     "timeLimit": 20,
     "options": [
-      { "text": "Start it", "effects": { "money": -800, "stress": 12 }},
+      {
+        "text": "Start it",
+        "effects": { "money": -800, "stress": 12 },
+        "meta": {
+          "hiredJob": {
+            "title": "Small Business Owner",
+            "salary": null,
+            "type": "self-employed"
+          }
+        }
+      },
       { "text": "Not now", "effects": { "money": 0, "stress": -2 }}
     ]
   },
@@ -232,5 +306,65 @@
       { "text": "Skip extra work", "effects": { "money": 0, "stress": -1 }}
     ],
     "timeoutEffect": { "money": 0, "stress": 1 }
+  }
+
+  ,{
+    "id": 22,
+    "category": "job",
+    "order": "mid",
+    "description": "A seasonal temp role at a logistics warehouse (short-term cash).",
+    "timeLimit": 10,
+    "options": [
+      { "text": "Take the temp role", "effects": { "money": 600, "stress": 8 }, "meta": { "hiredJob": { "title": "Warehouse Temp", "salary": 38000, "type": "temp" } } },
+      { "text": "Pass", "effects": { "money": 0, "stress": 0 } }
+    ]
+  },
+
+  {
+    "id": 23,
+    "category": "job",
+    "order": "mid",
+    "description": "Part-time tutoring gig for extra cash and experience.",
+    "timeLimit": 12,
+    "options": [
+      { "text": "Start tutoring", "effects": { "money": 300, "stress": 3 }, "meta": { "hiredJob": { "title": "Tutor (Part-time)", "salary": 16000, "type": "part-time" } } },
+      { "text": "Focus on job search", "effects": { "money": 0, "stress": -1 } }
+    ]
+  },
+
+  {
+    "id": 24,
+    "category": "job",
+    "order": "mid",
+    "description": "A freelance contract with irregular pay but flexible hours.",
+    "timeLimit": 12,
+    "options": [
+      { "text": "Accept contract", "effects": { "money": 900, "stress": 10 }, "meta": { "hiredJob": { "title": "Contractor (Freelance)", "salary": 48000, "type": "contract" } } },
+      { "text": "Decline", "effects": { "money": 0, "stress": -2 } }
+    ]
+  },
+
+  {
+    "id": 25,
+    "category": "job",
+    "order": "late",
+    "description": "Offer for an on-site retail manager position—long hours, higher pay.",
+    "timeLimit": 16,
+    "options": [
+      { "text": "Accept managerial role", "effects": { "money": 1800, "stress": 18 }, "meta": { "hiredJob": { "title": "Retail Manager", "salary": 78000, "type": "management" } } },
+      { "text": "Stay in current role", "effects": { "money": 300, "stress": -3 } }
+    ]
+  },
+
+  {
+    "id": 26,
+    "category": "job",
+    "order": "late",
+    "description": "A lucrative startup offer with equity — high risk, high reward.",
+    "timeLimit": 20,
+    "options": [
+      { "text": "Join the startup", "effects": { "money": 0, "stress": 20 }, "meta": { "hiredJob": { "title": "Startup Engineer", "salary": 90000, "type": "startup" } } },
+      { "text": "Choose stability", "effects": { "money": 1000, "stress": -4 } }
+    ]
   }
 ]
