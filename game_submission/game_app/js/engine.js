@@ -7,7 +7,8 @@ function computeTimeoutEffect(event) {
         if (typeof fx.debt === 'number') addDebt = Math.max(addDebt, fx.debt);
         if (typeof fx.stocksValue === 'number') stocksDelta = Math.min(stocksDelta, fx.stocksValue);
     });
-    return { money: minMoney - 50, stress: Math.max(maxStress, 5), debt: addDebt, stocksValue: stocksDelta };
+    // harsher timeouts: larger money hit and more stress applied
+    return { money: minMoney - 150, stress: Math.max(maxStress + 2, 8), debt: addDebt, stocksValue: stocksDelta };
 }
 
 function computeDisplayEffects(effects, category) {
@@ -52,11 +53,43 @@ function applyEffects(effects, category) {
         if (typeof m.addArrearsAmount === 'number') gameState.rentArrears += Math.max(0, m.addArrearsAmount);
         if (m.includeArrears) { const owed = gameState.rentArrears || 0; if (owed > 0) { gameState.cash -= owed; gameState.rentArrears = 0; } }
         if (typeof m.reduceArrearsBy === 'number' && m.reduceArrearsBy > 0) gameState.rentArrears = Math.max(0, (gameState.rentArrears || 0) - m.reduceArrearsBy);
+        // create a status via meta.createStatus (object or array)
+        if (m.createStatus) {
+            try {
+                const toCreate = Array.isArray(m.createStatus) ? m.createStatus : [m.createStatus];
+                toCreate.forEach(s => {
+                    // ensure label exists
+                    const obj = Object.assign({}, s);
+                    if (!obj.label) obj.label = obj.type || 'Status';
+                    if (window.gameState && typeof window.gameState.addStatus === 'function') {
+                        window.gameState.addStatus(obj);
+                    } else {
+                        // fallback: push directly
+                        gameState.statuses = gameState.statuses || [];
+                        gameState.statuses.push(obj);
+                        try { window.dispatchEvent(new CustomEvent('statuses:changed', { detail: gameState.statuses })); } catch (e) {}
+                    }
+                });
+            } catch (e) { /* ignore */ }
+        }
+        // If a hiredJob meta is present, update the current job via the state API so UI updates.
+        if (m.hiredJob) {
+            if (window.gameState && typeof window.gameState.setCurrentJob === 'function') {
+                try { window.gameState.setCurrentJob(m.hiredJob); } catch (e) { /* ignore */ }
+            } else {
+                // fallback: set directly on gameState and dispatch event
+                try {
+                    gameState.currentJob = m.hiredJob;
+                    try { window.dispatchEvent(new CustomEvent('job:changed', { detail: m.hiredJob })); } catch (e) {}
+                } catch (e) {}
+            }
+        }
     }
     updateCounters();
     if (gameState.cash < 0 && gameState.debt <= 0) { gameState.debt += Math.abs(gameState.cash); gameState.cash = 0; }
     if (gameState.cash <= 0 && gameState.debt > 5000) { showGameOver("Debt spiral! You couldn't keep up with the bills."); return 'gameover'; }
-    if ((gameState.stress || 0) >= 100) { showGameOver("Burnout! Life isn't just numbers—take care of yourself."); return 'gameover'; }
+    // New stress cap: more challenging — hitting persistent high stress ends the game earlier
+    if ((gameState.stress || 0) >= 50) { showGameOver("Burnout! Life isn't just numbers—take care of yourself."); return 'gameover'; }
 }
 
 function startTimer(seconds, timerElement, onTimeout, onTick) {
@@ -91,9 +124,12 @@ function triggerEvent(category, order, prerequisites = {}) {
         button.onclick = () => {
             clearActiveTimer();
             const meta = option.effects?.meta;
+            // Ensure option.meta is preserved into applied effects so hiredJob metadata is not lost.
+            const optionMeta = option.meta || {};
             if (meta && meta.minigame) {
                 runMinigame(meta.minigame, meta.minigameConfig || {}).then(rewardEffects => {
                     const merged = mergeEffects(option.effects, rewardEffects);
+                    merged.meta = { ...(merged.meta || {}), ...(optionMeta || {}) };
                     const displayFx = computeDisplayEffects(merged, category);
                     showResultFeedback(displayFx);
                     const state = applyEffects(merged, category);
@@ -101,17 +137,21 @@ function triggerEvent(category, order, prerequisites = {}) {
                     if (state === 'gameover') return;
                     setTimeout(advanceOrEnd, 450);
                 }).catch(() => {
-                    const displayFx = computeDisplayEffects(option.effects, category);
+                    const merged = { ...(option.effects || {}) };
+                    merged.meta = { ...(merged.meta || {}), ...(optionMeta || {}) };
+                    const displayFx = computeDisplayEffects(merged, category);
                     showResultFeedback(displayFx);
-                    const state = applyEffects(option.effects, category);
+                    const state = applyEffects(merged, category);
                     gameState.questionCount = (gameState.questionCount || 0) + 1;
                     if (state === 'gameover') return;
                     setTimeout(advanceOrEnd, 450);
                 });
             } else {
-                const displayFx = computeDisplayEffects(option.effects, category);
+                const merged = { ...(option.effects || {}) };
+                merged.meta = { ...(merged.meta || {}), ...(optionMeta || {}) };
+                const displayFx = computeDisplayEffects(merged, category);
                 showResultFeedback(displayFx);
-                const state = applyEffects(option.effects, category);
+                const state = applyEffects(merged, category);
                 gameState.questionCount = (gameState.questionCount || 0) + 1;
                 if (state === 'gameover') return;
                 setTimeout(advanceOrEnd, 450);
@@ -145,7 +185,43 @@ function triggerEvent(category, order, prerequisites = {}) {
 
 function advanceOrEnd() {
     if (gameState.questionCount >= MAX_QUESTIONS) { showSuccess("You balanced work, housing, and the markets. Not bad for a newcomer!"); return; }
+    // process any per-round statuses (job payments, sickness effects, etc.) before next event
+    if (typeof processStatuses === 'function') processStatuses();
     renderNextEvent();
+}
+
+function processStatuses() {
+    gameState.statuses = gameState.statuses || [];
+    const toRemove = [];
+    // iterate and apply each status
+    gameState.statuses.forEach(s => {
+        // job payments: pay every paymentInterval rounds
+        if (s.type === 'job' && s.paymentAmount) {
+            s._tick = (s._tick || 0) + 1;
+            if (s._tick >= (s.paymentInterval || 3)) {
+                gameState.cash += (s.paymentAmount || 0);
+                s._tick = 0;
+                // small message
+                try { showResultFeedback({ money: s.paymentAmount, stress: 0 }, `Payday: ${s.label} paid $${s.paymentAmount}`); } catch (e) {}
+            }
+        }
+        // generic periodic effect schema: deltaMoney, deltaStress, remainingRounds
+        if (typeof s.deltaMoney === 'number') { gameState.cash += s.deltaMoney; }
+        if (typeof s.deltaStress === 'number') { gameState.stress = (gameState.stress || 0) + s.deltaStress; }
+        if (typeof s.remainingRounds === 'number') {
+            s.remainingRounds -= 1;
+            if (s.remainingRounds <= 0 && !s.persistent) toRemove.push(s.id);
+        }
+    });
+    // remove expired statuses
+    if (toRemove.length) {
+        gameState.statuses = gameState.statuses.filter(s => !toRemove.includes(s.id));
+        try { window.dispatchEvent(new CustomEvent('statuses:changed', { detail: gameState.statuses })); } catch (e) {}
+    }
+    // update UI counters and check for failure
+    if (typeof updateCounters === 'function') updateCounters();
+    // if payments pushed cash negative, shift to debt
+    if (gameState.cash < 0 && gameState.debt <= 0) { gameState.debt += Math.abs(gameState.cash); gameState.cash = 0; }
 }
 
 function renderNextEvent() {
@@ -154,7 +230,13 @@ function renderNextEvent() {
     if (gameState.questionCount > 10) order = "mid";
     if (gameState.questionCount > 20) order = "late";
     const prerequisites = { invested_in_stocks: gameState.investedInStocks || false };
-    if (Math.random() < 0.35 && triggerEvent("random", order, prerequisites)) return;
+    // increase chance of random disruptions early, and bias towards housing events as question count rises
+    const rnd = Math.random();
+    if (rnd < 0.45 && triggerEvent("random", order, prerequisites)) return;
+    if (gameState.questionCount > 12) {
+        // mid/late game: housing events become more likely
+        if (Math.random() < 0.55 && triggerEvent("housing", order, prerequisites)) return;
+    }
     if (triggerEvent("job", order, prerequisites)) return;
     if (triggerEvent("housing", order, prerequisites)) return;
     const altOrders = order === 'early' ? ['mid','late'] : order === 'mid' ? ['late','early'] : ['mid','early'];

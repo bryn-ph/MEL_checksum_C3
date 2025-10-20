@@ -73,4 +73,28 @@
 
   { "id": 25, "category": "random", "order": "late", "description": "Tax offset announced.", "timeLimit": 12,
     "options": [ {"text":"Adjust withholding","effects":{"money":100,"stress":-1}}, {"text":"Ignore","effects":{"money":0,"stress":0}} ] }
+,
+  { "id": 26, "category": "random", "order": "mid", "description": "Workplace harassment — it wears on you.", "timeLimit": 10,
+    "options": [ {"text":"Report it (takes time)", "effects": {"money": -80, "stress": 3, "meta": { "createStatus": { "type": "stress_over_time", "label": "Anxiety (work)", "deltaStress": 4, "remainingRounds": 3 } } } }, {"text":"Ignore and cope","effects": {"money": 0, "stress": 6, "meta": { "createStatus": { "type": "stress_over_time", "label": "Lingering Anxiety", "deltaStress": 2, "remainingRounds": 5 } } } } ] },
+
+  { "id": 27, "category": "random", "order": "mid", "description": "Chronic back pain after moving heavy boxes.", "timeLimit": 8,
+    "options": [ {"text":"See a physio","effects": {"money": -120, "stress": -1 }}, {"text":"Tough it out","effects": {"money": 0, "stress": 2, "meta": { "createStatus": { "type": "health_penalty", "label": "Back pain", "deltaStress": 2, "deltaMoney": -20, "remainingRounds": 4 } } } } ] },
+
+  { "id": 28, "category": "random", "order": "late", "description": "A noisy neighbour keeps you awake for nights.", "timeLimit": 9,
+    "options": [ {"text":"Confront politely","effects": {"money": 0, "stress": 1 }}, {"text":"File complaint","effects": {"money": -20, "stress": 0, "meta": { "createStatus": { "type": "sleep_loss", "label": "Sleep Debt", "deltaStress": 3, "remainingRounds": 3 } } } } ] },
+
+  { "id": 29, "category": "random", "order": "mid", "description": "A scamming contractor leaves you with repair bills.", "timeLimit": 12,
+    "options": [ {"text":"Fight it (legal fees)", "effects": {"money": -400, "stress": 8 }}, {"text":"Accept partial refund","effects": {"money": -150, "stress": 4, "meta": { "createStatus": { "type": "financial_stress", "label": "Worry about bills", "deltaStress": 3, "remainingRounds": 6 } } } } ] }
+,
+  { "id": 30, "category": "random", "order": "mid", "description": "Community centre fine for littering (you forgot).", "timeLimit": 6,
+    "options": [ {"text":"Pay the fine","effects": {"money": -90, "stress": 2}}, {"text":"Appeal it","effects": {"money": 0, "stress": 4, "meta": { "createStatus": { "type": "stress_over_time", "label": "Court Stress", "deltaStress": 2, "remainingRounds": 3 } } } } ] },
+
+  { "id": 31, "category": "random", "order": "late", "description": "Landlord increases rent unexpectedly.", "timeLimit": 10,
+    "options": [ {"text":"Negotiate (costs time)", "effects": {"money": -40, "stress": 3, "meta": { "createStatus": { "type": "rent_pressure", "label": "Rent Hike", "deltaMoney": -80, "remainingRounds": 8 } } } }, {"text":"Accept and adjust budget","effects": {"money": 0, "stress": 2, "meta": { "createStatus": { "type": "rent_pressure", "label": "Higher Rent", "deltaMoney": -60, "remainingRounds": 10 } } } } ] },
+
+  { "id": 32, "category": "random", "order": "mid", "description": "Supervisor assigns you a difficult client; it's draining.", "timeLimit": 8,
+    "options": [ {"text":"Ask for support","effects": {"money": 0, "stress": 2, "meta": { "createStatus": { "type": "work_stress", "label": "Difficult client", "deltaStress": 3, "remainingRounds": 4 } } } }, {"text":"Tackle it yourself","effects": {"money": 0, "stress": 5 } } ] },
+
+  { "id": 33, "category": "random", "order": "late", "description": "A small side-project goes wrong and you lose a deposit.", "timeLimit": 9,
+    "options": [ {"text":"Absorb loss","effects": {"money": -220, "stress": 4 }}, {"text":"Take a loan","effects": {"money": 400, "debt": 400, "stress": 6, "meta": { "createStatus": { "type": "debt_pressure", "label": "Loan Repayment", "deltaMoney": -30, "deltaStress": 1, "remainingRounds": 10 } } } } ] }
 ]
